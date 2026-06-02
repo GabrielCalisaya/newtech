@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-# newtech
-[200~# New Tech — Sitio Web Corporativo 🚀
-=======
+
 # New Tech — Sitio Web Corporativo 🚀
 
 ¡Bienvenido al repositorio oficial de **New Tech**! Esta es la landing page principal de nuestra startup enfocada en el desarrollo web de alta calidad, herramientas digitales a medida y consultoría cloud[cite: 2].
@@ -46,4 +43,3 @@ El sitio está diseñado desde cero con un enfoque de alto rendimiento, optimiza
 │   └── logo.png        # Favicon e imagotipo base
 ├── index.html          # Documento principal estructurado de la landing
 └── README.md           # Documentación técnica del proyecto
->>>>>>> 1b860d4e2a8239dc7cf94595c536cb23d05a38c1
