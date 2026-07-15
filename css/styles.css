@@ -1276,6 +1276,26 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
     color: var(--primary);
 }
 
+.footer-contact-link {
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    margin-top: 0.45rem;
+    color: var(--text-muted);
+    line-height: 1.25;
+    transition: color var(--transition-fast);
+}
+
+.footer-contact-link:hover {
+    color: var(--primary);
+}
+
+.footer-contact-link:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
 .footer-bottom {
     text-align: center;
     padding-top: 2rem;
@@ -1758,6 +1778,10 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
 
     .footer-about p {
         max-width: 100%;
+    }
+
+    .footer-contact-link {
+        width: auto;
     }
 
     .faq-question {
