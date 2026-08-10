@@ -82,11 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
             img.loading = 'lazy';
             btn.appendChild(img);
 
-            const tip = document.createElement('span');
-            tip.className = 'carousel-tooltip';
-            tip.textContent = project.work;
-            btn.appendChild(tip);
-
             return btn;
         };
 
@@ -330,8 +325,10 @@ document.addEventListener('DOMContentLoaded', () => {
             btnText.style.display = 'none';
             btnSpinner.style.display = 'inline-block';
             submitBtn.disabled = true;
+            // Se limpia solo con clases. Poner display inline acá hacía que
+            // .form-status.error nunca pudiera mostrarse (el inline gana).
             formStatus.className = 'form-status';
-            formStatus.style.display = 'none';
+            formStatus.textContent = '';
 
             const formData = new FormData(contactForm);
             const endpoint = 'https://formspree.io/f/mvzydwvv';
