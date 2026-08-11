@@ -1,3 +1,40 @@
+/* ============================================================
+   PRECIOS — punto único de edición.
+   Todo lo que se muestra en la calculadora y en el FAQ sale de acá.
+   Valores en pesos argentinos. Actualizalos cuando cambien.
+   ============================================================ */
+const PRECIOS = {
+    moneda: 'ARS',
+    // base = piso del servicio; el multiplicador de tamaño se aplica sobre él.
+    //
+    // Los pisos están alineados al MÍNIMO del mercado argentino 2026:
+    //   Landing a medida ............ $200.000 – $500.000
+    //   Sitio institucional ......... $500.000 – $1.500.000
+    //   Tienda WooCommerce .......... $500.000 – $1.200.000
+    //   Desarrollo a medida ......... $1.500.000 +
+    // El bot de WhatsApp no tiene una referencia de mercado publicada
+    // comparable, así que queda en el valor definido por New Tech.
+    tipos: {
+        'Desarrollo Web': { label: 'Sitio o landing', base: 200000, semanas: [1, 2] },
+        'Tienda Online': { label: 'Tienda online', base: 500000, semanas: [3, 5] },
+        'Bot de WhatsApp': { label: 'Bot de WhatsApp', base: 500000, semanas: [2, 4] },
+        'Sistema de Gestión': { label: 'Sistema a medida', base: 1500000, semanas: [5, 10] },
+        'Consultoría Cloud': { label: 'Consultoría cloud', base: null, semanas: [1, 3] }
+    },
+    tamanos: [
+        { id: 'chico', label: 'Chico', detalle: '1 a 3 secciones / hasta 20 productos', factor: 1 },
+        { id: 'medio', label: 'Mediano', detalle: '4 a 8 secciones / hasta 100 productos', factor: 1.6 },
+        { id: 'grande', label: 'Grande', detalle: '9+ secciones / 100+ productos', factor: 2.4 }
+    ],
+    extras: [
+        { id: 'no', label: 'No, algo simple', factor: 1, semanasExtra: 0 },
+        { id: 'alguna', label: 'Una o dos', factor: 1.25, semanasExtra: 1 },
+        { id: 'varias', label: 'Varias', factor: 1.6, semanasExtra: 2 }
+    ],
+    // margen del rango que se muestra (±%)
+    margen: 0.2
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const WA_NUMBER = '5493885187080';
 
@@ -490,6 +527,139 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
+    // ============================================================
+    // Calculadora de presupuesto orientativo
+    // ============================================================
+    const calcForm = document.getElementById('calc-form');
+    if (calcForm) {
+        const elTipo = document.getElementById('calc-tipo');
+        const elTamano = document.getElementById('calc-tamano');
+        const elTamanoGroup = document.getElementById('calc-tamano-group');
+        const elTamanoLabel = document.getElementById('calc-tamano-label');
+        const elExtras = document.getElementById('calc-extras');
+        const elRange = document.getElementById('calc-range');
+        const elTime = document.getElementById('calc-time');
+        const elCta = document.getElementById('calc-cta');
+
+        const estado = { tipo: null, tamano: null, extras: null };
+
+        const fmt = (n) => {
+            // redondeo a la decena de miles para no fingir precisión
+            const r = Math.round(n / 10000) * 10000;
+            return '$' + r.toLocaleString('es-AR');
+        };
+
+        const opcion = (grupo, valor, label, detalle) => {
+            const id = `${grupo}-${valor}`;
+            const wrap = document.createElement('label');
+            wrap.className = 'calc-option';
+            wrap.setAttribute('for', id);
+
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = grupo;
+            input.id = id;
+            input.value = valor;
+
+            const texto = document.createElement('span');
+            texto.className = 'calc-option-text';
+            const strong = document.createElement('strong');
+            strong.textContent = label;
+            texto.appendChild(strong);
+            if (detalle) {
+                const small = document.createElement('span');
+                small.textContent = detalle;
+                texto.appendChild(small);
+            }
+
+            wrap.append(input, texto);
+            return wrap;
+        };
+
+        Object.entries(PRECIOS.tipos).forEach(([valor, cfg]) => {
+            elTipo.appendChild(opcion('calc-tipo', valor, cfg.label));
+        });
+        PRECIOS.tamanos.forEach((t) => {
+            elTamano.appendChild(opcion('calc-tamano', t.id, t.label, t.detalle));
+        });
+        PRECIOS.extras.forEach((e) => {
+            elExtras.appendChild(opcion('calc-extras', e.id, e.label));
+        });
+
+        const calcular = () => {
+            const { tipo, tamano, extras } = estado;
+
+            if (!tipo) {
+                elRange.textContent = 'Elegí una opción para empezar';
+                elTime.textContent = '';
+                return;
+            }
+
+            const cfgTipo = PRECIOS.tipos[tipo];
+
+            // La consultoría cloud no se presupuesta por alcance cerrado
+            if (cfgTipo.base === null) {
+                elTamanoGroup.style.display = 'none';
+                elRange.textContent = 'Se cotiza por hora o por proyecto';
+                elTime.textContent = 'Depende del alcance del relevamiento. Escribinos y lo definimos en una charla.';
+                return;
+            }
+
+            elTamanoGroup.style.display = '';
+            elTamanoLabel.textContent = tipo === 'Tienda Online'
+                ? '¿Cuántos productos aproximadamente?'
+                : '¿Qué tamaño tiene el proyecto?';
+
+            if (!tamano || !extras) {
+                elRange.textContent = 'Completá las tres preguntas';
+                elTime.textContent = '';
+                return;
+            }
+
+            const cfgTamano = PRECIOS.tamanos.find((t) => t.id === tamano);
+            const cfgExtras = PRECIOS.extras.find((e) => e.id === extras);
+
+            const centro = cfgTipo.base * cfgTamano.factor * cfgExtras.factor;
+            // El piso nunca puede quedar por debajo del "desde" publicado
+            const min = Math.max(cfgTipo.base, centro * (1 - PRECIOS.margen));
+            const max = centro * (1 + PRECIOS.margen);
+
+            const semMin = cfgTipo.semanas[0] + cfgExtras.semanasExtra;
+            const semMax = cfgTipo.semanas[1] + cfgExtras.semanasExtra;
+
+            elRange.textContent = `${fmt(min)} a ${fmt(max)}`;
+            elTime.textContent = `Plazo estimado: ${semMin} a ${semMax} semanas.`;
+        };
+
+        calcForm.addEventListener('change', (e) => {
+            const { name, value } = e.target;
+            if (name === 'calc-tipo') estado.tipo = value;
+            if (name === 'calc-tamano') estado.tamano = value;
+            if (name === 'calc-extras') estado.extras = value;
+            calcular();
+        });
+
+        // El CTA lleva al formulario con el servicio ya elegido y un
+        // mensaje armado con lo que respondió, para no repetir la info.
+        elCta.addEventListener('click', () => {
+            if (!estado.tipo) return;
+            setService(estado.tipo);
+
+            const mensaje = document.getElementById('form-message');
+            if (!mensaje || mensaje.value.trim() !== '') return;
+
+            const cfgTipo = PRECIOS.tipos[estado.tipo];
+            const partes = [`Hola, usé la calculadora del sitio: ${cfgTipo.label}`];
+            if (estado.tamano) {
+                partes.push(`tamaño ${PRECIOS.tamanos.find((t) => t.id === estado.tamano).label.toLowerCase()}`);
+            }
+            if (estado.extras) {
+                partes.push(`integraciones: ${PRECIOS.extras.find((x) => x.id === estado.extras).label.toLowerCase()}`);
+            }
+            mensaje.value = partes.join(', ') + '.';
+        });
+    }
 
     const contactForm = document.getElementById('contact-form');
     const formStatus = document.getElementById('form-status');

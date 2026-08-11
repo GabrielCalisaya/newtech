@@ -1,42 +1,41 @@
-feat: portafolio real, formulario con menos friccion y microinteracciones
+feat: precios publicos, calculadora, foto del fundador y politica de privacidad
 
-Fases 2 y 3 de la auditoria, en lo que no requiere datos del negocio.
+Precios
+- pisos alineados al minimo del mercado argentino 2026:
+    landing        $100.000 -> $200.000
+    tienda online  $200.000 -> $500.000
+    sistema medida $500.000 -> $1.500.000
+    bot WhatsApp   $500.000 (sin referencia de mercado comparable)
+- rangos "desde" en las cinco tarjetas de servicio
+- el FAQ de precio deja de responder "depende": ahora da los pisos,
+  aclara que no incluye dominio/hosting/licencias y deriva a la
+  calculadora
+- todos los valores salen de un unico objeto PRECIOS al inicio de
+  main.js: se actualizan en un solo lugar
 
-Portafolio
-- nueva grilla de casos: cada proyecto se muestra con nombre visible,
-  que se construyo, que resultado dio y enlace al sitio. Antes eran
-  siete logos en escala de grises al 55% de opacidad que habia que
-  descubrir por clic
-- el carrusel baja a banda secundaria de "confian en New Tech"
-- las tarjetas salen del mismo array PORTFOLIO: sumar un caso lo
-  publica en los dos lugares
+Calculadora de presupuesto
+- tres preguntas (tipo, tamano, integraciones) que devuelven un rango
+  orientativo y un plazo en semanas, sin pedir datos
+- el piso nunca baja del "desde" publicado
+- el CTA prellena el formulario con el servicio y un mensaje armado
+  con lo que respondio, para que no tenga que repetirlo
+- la consultoria cloud no se estima por alcance cerrado: se deriva a
+  cotizacion por hora o por proyecto
+- nueva entrada "Precios" en el menu de escritorio y mobile
 
-Formulario
-- telefono pasa a opcional: era friccion alta en un primer contacto
-- mensajes de error por campo, no solo borde rojo
-- aria-invalid y foco al primer campo con error, que antes podia
-  quedar fuera de pantalla mientras el aviso aparecia al pie
-- chip "Consultando por: X" al llegar desde un CTA de servicio, con
-  boton para quitarlo. Antes el select cambiaba en silencio
+Confianza
+- foto de Gabriel en Nosotros, con rol y ubicacion
+- San Salvador de Jujuy visible en el pie
+- condicion fiscal: monotributista, factura C, en el FAQ y en el pie
+- badge del hero pasa a "Disponibilidad inmediata"
 
-Hero
-- los stats "A medida" y "100%" eran frases con formato de dato y
-  restaban credibilidad al unico verificable. Ahora: proyectos
-  entregados (contados desde PORTFOLIO) y servicios ofrecidos
-- la terminal de proyecto.js se escribe sola al entrar en pantalla.
-  El codigo ya viene en el HTML, asi que no hay salto de layout ni
-  depende del JS para verse. Respeta prefers-reduced-motion
-
-WhatsApp
-- el mensaje prellenado toma el servicio que el usuario venia mirando
-
-Accesibilidad
-- boton del modal de exito de 41px a 44px, ultimo target pendiente
+Legal
+- privacidad.html conforme a la Ley 25.326, con los textos que exige
+  la normativa sobre derecho de acceso y organo de control
+- enlazada desde el formulario y el pie
+- sumada al sitemap
 
 Testimonios
-- seccion escrita y con estilos, comentada en index.html hasta tener
-  citas reales. No se publican testimonios inventados
+- se elimina la seccion comentada y su CSS: no se van a usar
 
-PENDIENTES.md documenta lo que falta y por que no lo puedo resolver solo.
-
-cache-busting: styles.css v8, main.js v9
+cache-busting: styles.css v9, main.js v11

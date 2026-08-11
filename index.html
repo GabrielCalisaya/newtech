@@ -67,7 +67,7 @@
     <link rel="preload" href="fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" href="css/fonts.css?v=5">
-    <link rel="stylesheet" href="css/styles.css?v=8">
+    <link rel="stylesheet" href="css/styles.css?v=9">
 
     <!-- Font Awesome sin bloquear el render: se aplica al terminar de cargar.
          Los iconos son decorativos, así que aparecen un instante después
@@ -110,6 +110,7 @@
                     <a href="#proyectos">Proyectos</a>
                     <a href="#servicios">Servicios</a>
                     <a href="#nosotros">Nosotros</a>
+                    <a href="#calculadora">Precios</a>
                     <a href="#faq">Preguntas</a>
                     <a href="#contacto" class="btn btn-primary btn-nav">Pedir presupuesto</a>
                 </nav>
@@ -132,6 +133,7 @@
             <a href="#proyectos" class="mobile-link">Proyectos</a>
             <a href="#servicios" class="mobile-link">Servicios</a>
             <a href="#nosotros" class="mobile-link">Nosotros</a>
+            <a href="#calculadora" class="mobile-link">Precios</a>
             <a href="#faq" class="mobile-link">Preguntas</a>
             <a href="#contacto" class="btn btn-primary mobile-btn">Pedir presupuesto</a>
             <button class="theme-toggle theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Cambiar tema">
@@ -149,7 +151,7 @@
             <!-- Sin .fade-in-up: está sobre el pliegue y no debe esperar
                  al IntersectionObserver para hacerse visible. -->
             <div class="hero-content">
-                <span class="hero-eyebrow"><span class="pulse-dot"></span> Disponible para nuevos proyectos</span>
+                <span class="hero-eyebrow"><span class="pulse-dot"></span> Disponibilidad inmediata &middot; empezamos esta semana</span>
                 <h1 class="hero-title">Escalá tu negocio con <span class="highlight">desarrollo web y herramientas</span> a medida</h1>
                 <p class="hero-subtitle">En New Tech diseñamos sitios, tiendas online, sistemas de gestión y automatizaciones que se adaptan a tu operación. Consultoría en la nube cuando tu proyecto lo necesita. Trabajamos con empresas de todo el país y proyectos remotos, con foco en resultados y comunicación directa.</p>
                 <div class="hero-buttons">
@@ -231,7 +233,15 @@
                     <h3>Nuestra historia</h3>
                     <p>New Tech nació con una idea simple: que cualquier empresa pueda acceder a desarrollo web y herramientas digitales de calidad, sin procesos burocráticos ni intermediarios innecesarios.</p>
                     <p>Detrás de la marca está un equipo técnico reducido con comunicación directa en cada etapa: desde la primera consulta hasta la entrega y el soporte. Eso nos permite mover rápido, adaptarnos a tu prioridad y cuidar cada detalle del proyecto.</p>
-                    <p class="why-founder">Fundado por <strong>Gabriel Calisaya</strong> — desarrollo full stack y consultoría cloud.</p>
+                    <div class="founder">
+                        <img src="img/gabriel.webp" alt="Gabriel Calisaya, fundador de New Tech" class="founder-photo"
+                            width="120" height="120" loading="lazy">
+                        <div class="founder-info">
+                            <strong>Gabriel Calisaya</strong>
+                            <span>Fundador — desarrollo full stack y consultoría cloud</span>
+                            <span class="founder-location">San Salvador de Jujuy, Argentina</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="why-points fade-in-up">
                     <div class="why-point">
@@ -311,71 +321,81 @@
                     <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
                     <h3>Desarrollo web</h3>
                     <p>Sitios institucionales, landings y presencia profesional optimizada para <span class="highlight">Google y conversiones</span>.</p>
+                    <span class="service-price">Desde <strong>$200.000</strong></span>
                     <a href="#contacto" class="service-cta">Cotizar desarrollo web <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
                 <article class="service-card glass-card fade-in-up" data-service="Tienda Online">
                     <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
                     <h3>Tiendas online</h3>
                     <p>E-commerce a medida para <span class="highlight">vender 24/7</span> con panel autoadministrable y sin comisiones por venta.</p>
+                    <span class="service-price">Desde <strong>$500.000</strong></span>
                     <a href="#contacto" class="service-cta">Cotizar tienda online <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
                 <article class="service-card glass-card fade-in-up" data-service="Bot de WhatsApp">
                     <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
                     <h3>Automatización</h3>
                     <p>Bots de WhatsApp y flujos que <span class="highlight">responden al instante</span> y liberan tiempo de tu equipo.</p>
+                    <span class="service-price">Desde <strong>$500.000</strong></span>
                     <a href="#contacto" class="service-cta">Cotizar automatización <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
                 <article class="service-card glass-card fade-in-up" data-service="Sistema de Gestión">
                     <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
                     <h3>Sistemas a medida</h3>
                     <p>Herramientas de gestión: stock, clientes, pedidos y reportes <span class="highlight">adaptados a tu operación</span>.</p>
+                    <span class="service-price">Desde <strong>$1.500.000</strong></span>
                     <a href="#contacto" class="service-cta">Cotizar sistema <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
                 <article class="service-card glass-card fade-in-up" data-service="Consultoría Cloud">
                     <div class="service-icon"><i class="fa-solid fa-cloud"></i></div>
                     <h3>Consultoría cloud</h3>
                     <p>Asesoramiento para migrar, optimizar costos y elegir la <span class="highlight">infraestructura correcta</span> en la nube.</p>
+                    <span class="service-price"><strong>Por hora o por proyecto</strong></span>
                     <a href="#contacto" class="service-cta">Cotizar consultoría <i class="fa-solid fa-arrow-right"></i></a>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- ===================================================================
-         TESTIMONIOS — sección lista, sin publicar.
 
-         Está comentada a propósito: no invento citas de clientes.
-         Para activarla:
-           1. Reemplazá los tres bloques con testimonios reales.
-           2. Borrá esta línea de apertura del comentario y la de cierre.
-         Con dos testimonios alcanza. Pedilos por WhatsApp: "¿me tirás dos
-         líneas de cómo te resultó trabajar con nosotros?" suele alcanzar.
-    ====================================================================
-    <section class="testimonials">
+    <section class="calc" id="calculadora">
         <div class="container">
             <div class="section-header fade-in-up">
-                <span class="section-badge">Lo que dicen</span>
-                <h2>Clientes que ya trabajaron con nosotros</h2>
+                <span class="section-badge">Presupuesto</span>
+                <h2>Calculá una estimación</h2>
+                <p>Tres preguntas y te damos un rango orientativo, sin dejar tus datos.</p>
             </div>
-            <div class="testimonials-grid">
-                <figure class="testimonial glass-card fade-in-up">
-                    <blockquote>TEXTO DEL TESTIMONIO</blockquote>
-                    <figcaption>
-                        <strong>NOMBRE Y APELLIDO</strong>
-                        <span>CARGO — EMPRESA</span>
-                    </figcaption>
-                </figure>
-                <figure class="testimonial glass-card fade-in-up">
-                    <blockquote>TEXTO DEL TESTIMONIO</blockquote>
-                    <figcaption>
-                        <strong>NOMBRE Y APELLIDO</strong>
-                        <span>CARGO — EMPRESA</span>
-                    </figcaption>
-                </figure>
+
+            <div class="calc-card glass-card fade-in-up">
+                <form class="calc-form" id="calc-form">
+                    <fieldset class="calc-group">
+                        <legend>¿Qué necesitás?</legend>
+                        <div class="calc-options" id="calc-tipo"></div>
+                    </fieldset>
+
+                    <fieldset class="calc-group" id="calc-tamano-group">
+                        <legend id="calc-tamano-label">Tamaño</legend>
+                        <div class="calc-options" id="calc-tamano"></div>
+                    </fieldset>
+
+                    <fieldset class="calc-group">
+                        <legend>¿Necesitás integraciones? (pagos, envíos, facturación, otros sistemas)</legend>
+                        <div class="calc-options" id="calc-extras"></div>
+                    </fieldset>
+                </form>
+
+                <div class="calc-result" id="calc-result" role="status" aria-live="polite">
+                    <span class="calc-result-label">Estimación orientativa</span>
+                    <p class="calc-result-range" id="calc-range">Elegí una opción para empezar</p>
+                    <p class="calc-result-time" id="calc-time"></p>
+                    <p class="calc-disclaimer">
+                        Es una referencia, no un presupuesto. El precio final depende del alcance real,
+                        y lo cerramos después de una charla. No incluye dominio, hosting ni licencias de terceros.
+                    </p>
+                    <a href="#contacto" class="btn btn-primary calc-cta" id="calc-cta">Pedir presupuesto exacto</a>
+                </div>
             </div>
         </div>
     </section>
-    ==================================================================== -->
 
     <section class="faq" id="faq">
         <div class="container">
@@ -391,7 +411,7 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
-                        <p>El precio depende del alcance, integraciones y plazos. Tras una breve charla te enviamos una cotización personalizada sin compromiso. Cada proyecto es distinto y lo presupuestamos en función de lo que realmente necesitás.</p>
+                        <p>Para que puedas ubicarte antes de escribirnos, estos son los pisos: un sitio o landing arranca en <strong>$200.000</strong>, una tienda online en <strong>$500.000</strong>, un bot de WhatsApp en <strong>$500.000</strong> y un sistema de gestión a medida en <strong>$1.500.000</strong>. La consultoría cloud se cotiza por hora o por proyecto según el relevamiento.</p><p>De ahí para arriba depende del tamaño, las integraciones y los plazos. Si querés una referencia más ajustada a tu caso, usá la <a href="#calculadora" class="faq-link">calculadora de presupuesto</a>: tres preguntas y te da un rango, sin dejar tus datos.</p><p>Los valores no incluyen dominio, hosting ni licencias de terceros, que se pagan aparte y quedan a tu nombre.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
@@ -409,7 +429,7 @@
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
-                        <p>Trabajamos con seña al iniciar y saldo por etapas o al finalizar, según el proyecto. Los detalles los acordamos en la propuesta para que tengas claridad desde el primer día.</p>
+                        <p>Trabajamos con seña al iniciar y saldo por etapas o al finalizar, según el proyecto. Los detalles los acordamos en la propuesta para que tengas claridad desde el primer día.</p><p>Facturamos como monotributista, con <strong>factura C</strong>. Aceptamos transferencia bancaria.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
@@ -518,7 +538,7 @@
                             <span class="btn-text">Enviar mensaje</span>
                             <span class="btn-spinner" style="display: none;"><i class="fa-solid fa-spinner fa-spin"></i></span>
                         </button>
-                        <p class="form-privacy">Al enviar aceptás que usemos tus datos solo para responder tu consulta.</p>
+                        <p class="form-privacy">Al enviar aceptás que usemos tus datos solo para responder tu consulta. <a href="privacidad.html">Cómo tratamos tus datos</a>.</p>
                         <p class="form-note"><i class="fa-solid fa-clock"></i> Respuesta en menos de 24 h hábiles</p>
                         <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
                     </form>
@@ -560,6 +580,7 @@
             </div>
             <div class="footer-bottom">
                 <p>&copy; <span id="year"></span> New Tech. Todos los derechos reservados.</p>
+                <p class="footer-legal">San Salvador de Jujuy, Argentina &middot; Monotributista, emitimos factura C &middot; <a href="privacidad.html">Política de privacidad</a></p>
             </div>
         </div>
     </footer>
@@ -606,7 +627,7 @@
         </div>
     </div>
 
-    <script src="js/main.js?v=9"></script>
+    <script src="js/main.js?v=11"></script>
 </body>
 
 </html>
