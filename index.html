@@ -67,7 +67,7 @@
     <link rel="preload" href="fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin>
 
     <link rel="stylesheet" href="css/fonts.css?v=5">
-    <link rel="stylesheet" href="css/styles.css?v=9">
+    <link rel="stylesheet" href="css/styles.css?v=10">
 
     <!-- Font Awesome sin bloquear el render: se aplica al terminar de cargar.
          Los iconos son decorativos, así que aparecen un instante después
@@ -372,21 +372,15 @@
                         <div class="calc-options" id="calc-tipo"></div>
                     </fieldset>
 
-                    <fieldset class="calc-group" id="calc-tamano-group">
-                        <legend id="calc-tamano-label">Tamaño</legend>
-                        <div class="calc-options" id="calc-tamano"></div>
-                    </fieldset>
-
-                    <fieldset class="calc-group">
-                        <legend>¿Necesitás integraciones? (pagos, envíos, facturación, otros sistemas)</legend>
-                        <div class="calc-options" id="calc-extras"></div>
-                    </fieldset>
+                    <!-- Las preguntas siguientes cambian según el servicio elegido -->
+                    <div id="calc-preguntas"></div>
                 </form>
 
                 <div class="calc-result" id="calc-result" role="status" aria-live="polite">
                     <span class="calc-result-label">Estimación orientativa</span>
-                    <p class="calc-result-range" id="calc-range">Elegí una opción para empezar</p>
+                    <p class="calc-result-range" id="calc-range">Elegí un servicio para empezar</p>
                     <p class="calc-result-time" id="calc-time"></p>
+                    <ul class="calc-resumen" id="calc-resumen"></ul>
                     <p class="calc-disclaimer">
                         Es una referencia, no un presupuesto. El precio final depende del alcance real,
                         y lo cerramos después de una charla. No incluye dominio, hosting ni licencias de terceros.
@@ -627,7 +621,7 @@
         </div>
     </div>
 
-    <script src="js/main.js?v=11"></script>
+    <script src="js/main.js?v=12"></script>
 </body>
 
 </html>

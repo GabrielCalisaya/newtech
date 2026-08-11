@@ -1,41 +1,41 @@
-feat: precios publicos, calculadora, foto del fundador y politica de privacidad
+feat: calculadora con preguntas propias por servicio
 
-Precios
-- pisos alineados al minimo del mercado argentino 2026:
-    landing        $100.000 -> $200.000
-    tienda online  $200.000 -> $500.000
-    sistema medida $500.000 -> $1.500.000
-    bot WhatsApp   $500.000 (sin referencia de mercado comparable)
-- rangos "desde" en las cinco tarjetas de servicio
-- el FAQ de precio deja de responder "depende": ahora da los pisos,
-  aclara que no incluye dominio/hosting/licencias y deriva a la
-  calculadora
-- todos los valores salen de un unico objeto PRECIOS al inicio de
-  main.js: se actualizan en un solo lugar
+Antes las tres preguntas eran las mismas para todo, y "tamano chico:
+1 a 3 secciones" no significa nada para una tienda o un sistema.
+Ahora cada servicio define su propio cuestionario.
 
-Calculadora de presupuesto
-- tres preguntas (tipo, tamano, integraciones) que devuelven un rango
-  orientativo y un plazo en semanas, sin pedir datos
-- el piso nunca baja del "desde" publicado
-- el CTA prellena el formulario con el servicio y un mensaje armado
-  con lo que respondio, para que no tenga que repetirlo
-- la consultoria cloud no se estima por alcance cerrado: se deriva a
-  cotizacion por hora o por proyecto
-- nueva entrada "Precios" en el menu de escritorio y mobile
+Sitio o landing
+- tamano: landing / 2-5 secciones / institucional 6+
+- si ya tenes textos e imagenes o hay que producirlos
+- agregados: blog, turnos, segundo idioma, panel de contenido, SEO
 
-Confianza
-- foto de Gabriel en Nosotros, con rol y ubicacion
-- San Salvador de Jujuy visible en el pie
-- condicion fiscal: monotributista, factura C, en el FAQ y en el pie
-- badge del hero pasa a "Disponibilidad inmediata"
+Tienda online
+- cantidad de productos: hasta 25 / 100 / 500 / mas
+- plataforma: Tienda Nube / WooCommerce / a medida
+- integraciones: pagos, envios, AFIP, stock externo, precios mayoristas
 
-Legal
-- privacidad.html conforme a la Ley 25.326, con los textos que exige
-  la normativa sobre derecho de acceso y organo de control
-- enlazada desde el formulario y el pie
-- sumada al sitemap
+Bot de WhatsApp
+- que tiene que hacer: FAQ / menus y flujos / consultar datos reales
+- volumen de consultas diarias
+- agregados: derivar a humano, catalogo, turnos, links de pago, CRM
 
-Testimonios
-- se elimina la seccion comentada y su CSS: no se van a usar
+Sistema a medida
+- cuantas areas cubre
+- quienes lo usan y con que permisos
+- agregados: reportes, AFIP, migracion de planillas, sucursales,
+  uso movil, conexion con otros sistemas
 
-cache-busting: styles.css v9, main.js v11
+Consultoria cloud
+- pregunta por objetivo (diagnostico, migracion, costos, arquitectura)
+  y deriva a cotizacion, sin estimar un precio cerrado
+
+Ademas
+- las preguntas de agregados son de seleccion multiple, con marca
+  visual de check
+- el panel de resultado muestra el resumen de todo lo elegido
+- al pedir presupuesto, el mensaje del formulario se completa con el
+  detalle punto por punto y la estimacion que vio en pantalla
+- el motor es generico: agregar una pregunta u opcion es editar el
+  objeto PRECIOS, sin tocar la logica
+
+cache-busting: styles.css v10, main.js v12

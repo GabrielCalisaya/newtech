@@ -1,38 +1,205 @@
 /* ============================================================
    PRECIOS — punto único de edición.
-   Todo lo que se muestra en la calculadora y en el FAQ sale de acá.
-   Valores en pesos argentinos. Actualizalos cuando cambien.
+   Cada servicio define sus propias preguntas. Los valores están en
+   pesos argentinos y alineados al mínimo del mercado argentino 2026:
+     Landing a medida ....... $200.000 – $500.000
+     Sitio institucional .... $500.000 – $1.500.000
+     Tienda WooCommerce ..... $500.000 – $1.200.000
+     Desarrollo a medida .... $1.500.000 +
+   El bot de WhatsApp no tiene referencia de mercado publicada
+   comparable, así que queda en el valor definido por New Tech.
+
+   Cómo se calcula:
+     precio = base × (factores de las preguntas de una sola opción)
+                   × (1 + suma de los factores de los agregados)
+     semanas = semanasBase + suma de las semanas de todo lo elegido
    ============================================================ */
 const PRECIOS = {
     moneda: 'ARS',
-    // base = piso del servicio; el multiplicador de tamaño se aplica sobre él.
-    //
-    // Los pisos están alineados al MÍNIMO del mercado argentino 2026:
-    //   Landing a medida ............ $200.000 – $500.000
-    //   Sitio institucional ......... $500.000 – $1.500.000
-    //   Tienda WooCommerce .......... $500.000 – $1.200.000
-    //   Desarrollo a medida ......... $1.500.000 +
-    // El bot de WhatsApp no tiene una referencia de mercado publicada
-    // comparable, así que queda en el valor definido por New Tech.
-    tipos: {
-        'Desarrollo Web': { label: 'Sitio o landing', base: 200000, semanas: [1, 2] },
-        'Tienda Online': { label: 'Tienda online', base: 500000, semanas: [3, 5] },
-        'Bot de WhatsApp': { label: 'Bot de WhatsApp', base: 500000, semanas: [2, 4] },
-        'Sistema de Gestión': { label: 'Sistema a medida', base: 1500000, semanas: [5, 10] },
-        'Consultoría Cloud': { label: 'Consultoría cloud', base: null, semanas: [1, 3] }
-    },
-    tamanos: [
-        { id: 'chico', label: 'Chico', detalle: '1 a 3 secciones / hasta 20 productos', factor: 1 },
-        { id: 'medio', label: 'Mediano', detalle: '4 a 8 secciones / hasta 100 productos', factor: 1.6 },
-        { id: 'grande', label: 'Grande', detalle: '9+ secciones / 100+ productos', factor: 2.4 }
-    ],
-    extras: [
-        { id: 'no', label: 'No, algo simple', factor: 1, semanasExtra: 0 },
-        { id: 'alguna', label: 'Una o dos', factor: 1.25, semanasExtra: 1 },
-        { id: 'varias', label: 'Varias', factor: 1.6, semanasExtra: 2 }
-    ],
-    // margen del rango que se muestra (±%)
-    margen: 0.2
+    margen: 0.2,
+
+    servicios: {
+        'Desarrollo Web': {
+            label: 'Sitio o landing',
+            base: 200000,
+            semanasBase: [1, 2],
+            preguntas: [
+                {
+                    id: 'alcance',
+                    label: '¿Qué tamaño tiene el sitio?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'landing', label: 'Landing de una página', detalle: 'Una sola sección larga', factor: 1, semanas: 0 },
+                        { id: 'chico', label: 'Sitio de 2 a 5 secciones', detalle: 'Inicio, servicios, nosotros, contacto', factor: 1.6, semanas: 1 },
+                        { id: 'institucional', label: 'Institucional de 6 o más', detalle: 'Con subpáginas y más contenido', factor: 2.4, semanas: 2 }
+                    ]
+                },
+                {
+                    id: 'contenido',
+                    label: '¿Tenés los textos y las imágenes?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'listo', label: 'Sí, está todo listo', factor: 1, semanas: 0 },
+                        { id: 'parcial', label: 'Algo tengo', detalle: 'Hay que ordenar y completar', factor: 1.15, semanas: 0.5 },
+                        { id: 'nada', label: 'No, necesito ayuda', detalle: 'Redacción y búsqueda de imágenes', factor: 1.35, semanas: 1 }
+                    ]
+                },
+                {
+                    id: 'extras',
+                    label: '¿Necesitás algo de esto? (podés elegir varios)',
+                    tipo: 'multiple',
+                    opciones: [
+                        { id: 'blog', label: 'Blog autoadministrable', factor: 0.25, semanas: 1 },
+                        { id: 'turnos', label: 'Reservas o turnos', factor: 0.35, semanas: 1 },
+                        { id: 'idiomas', label: 'Segundo idioma', factor: 0.3, semanas: 0.5 },
+                        { id: 'panel', label: 'Panel para editar contenido', factor: 0.4, semanas: 1.5 },
+                        { id: 'seo', label: 'SEO avanzado y analítica', factor: 0.2, semanas: 0.5 }
+                    ]
+                }
+            ]
+        },
+
+        'Tienda Online': {
+            label: 'Tienda online',
+            base: 500000,
+            semanasBase: [3, 4],
+            preguntas: [
+                {
+                    id: 'catalogo',
+                    label: '¿Cuántos productos vas a cargar?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'hasta25', label: 'Hasta 25', factor: 1, semanas: 0 },
+                        { id: 'hasta100', label: 'Entre 26 y 100', factor: 1.4, semanas: 1 },
+                        { id: 'hasta500', label: 'Entre 101 y 500', factor: 1.9, semanas: 2 },
+                        { id: 'mas500', label: 'Más de 500', detalle: 'Requiere carga masiva', factor: 2.6, semanas: 3 }
+                    ]
+                },
+                {
+                    id: 'plataforma',
+                    label: '¿Sobre qué plataforma?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'tiendanube', label: 'Tienda Nube', detalle: 'Rápido, con abono mensual de la plataforma', factor: 1, semanas: 0 },
+                        { id: 'woo', label: 'WooCommerce', detalle: 'Sin comisión por venta, más control', factor: 1.5, semanas: 1 },
+                        { id: 'medida', label: 'A medida', detalle: 'Todo propio, máxima flexibilidad', factor: 2.4, semanas: 3 }
+                    ]
+                },
+                {
+                    id: 'integraciones',
+                    label: '¿Qué integraciones necesitás? (podés elegir varias)',
+                    tipo: 'multiple',
+                    opciones: [
+                        { id: 'pagos', label: 'Medios de pago', detalle: 'Mercado Pago, tarjetas', factor: 0.15, semanas: 0.5 },
+                        { id: 'envios', label: 'Cálculo de envíos', detalle: 'Correo Argentino, Andreani, OCA', factor: 0.2, semanas: 0.5 },
+                        { id: 'facturacion', label: 'Facturación electrónica AFIP', factor: 0.35, semanas: 1 },
+                        { id: 'stock', label: 'Sincronizar stock con otro sistema', factor: 0.4, semanas: 1.5 },
+                        { id: 'mayorista', label: 'Precios mayoristas o por lista', factor: 0.3, semanas: 1 }
+                    ]
+                }
+            ]
+        },
+
+        'Bot de WhatsApp': {
+            label: 'Bot de WhatsApp',
+            base: 500000,
+            semanasBase: [2, 3],
+            preguntas: [
+                {
+                    id: 'complejidad',
+                    label: '¿Qué tiene que hacer el bot?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'faq', label: 'Responder preguntas frecuentes', detalle: 'Horarios, precios, ubicación', factor: 1, semanas: 0 },
+                        { id: 'flujos', label: 'Guiar con menús y flujos', detalle: 'El cliente elige opciones', factor: 1.5, semanas: 1 },
+                        { id: 'datos', label: 'Consultar datos reales', detalle: 'Stock, turnos, estado de pedido', factor: 2.2, semanas: 2 }
+                    ]
+                },
+                {
+                    id: 'volumen',
+                    label: '¿Cuántas consultas recibís por día?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'bajo', label: 'Menos de 30', factor: 1, semanas: 0 },
+                        { id: 'medio', label: 'Entre 30 y 150', factor: 1.2, semanas: 0.5 },
+                        { id: 'alto', label: 'Más de 150', detalle: 'Requiere infraestructura dedicada', factor: 1.5, semanas: 1 }
+                    ]
+                },
+                {
+                    id: 'extras',
+                    label: '¿Algo más? (podés elegir varios)',
+                    tipo: 'multiple',
+                    opciones: [
+                        { id: 'humano', label: 'Derivar a una persona', factor: 0.2, semanas: 0.5 },
+                        { id: 'catalogo', label: 'Mostrar catálogo de productos', factor: 0.3, semanas: 1 },
+                        { id: 'turnos', label: 'Agendar turnos', factor: 0.4, semanas: 1 },
+                        { id: 'pagos', label: 'Enviar links de pago', factor: 0.25, semanas: 0.5 },
+                        { id: 'crm', label: 'Registrar contactos en una planilla o CRM', factor: 0.25, semanas: 0.5 }
+                    ]
+                }
+            ]
+        },
+
+        'Sistema de Gestión': {
+            label: 'Sistema a medida',
+            base: 1500000,
+            semanasBase: [5, 7],
+            preguntas: [
+                {
+                    id: 'modulos',
+                    label: '¿Cuántas áreas tiene que cubrir?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'uno', label: 'Una sola', detalle: 'Por ejemplo, solo stock', factor: 1, semanas: 0 },
+                        { id: 'pocos', label: 'Dos o tres', detalle: 'Stock y clientes, por ejemplo', factor: 1.5, semanas: 2 },
+                        { id: 'muchos', label: 'Cuatro o más', detalle: 'Gestión integral', factor: 2.3, semanas: 4 }
+                    ]
+                },
+                {
+                    id: 'usuarios',
+                    label: '¿Quiénes lo van a usar?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'solo', label: 'Solo yo', factor: 1, semanas: 0 },
+                        { id: 'equipo', label: 'Un equipo con roles', detalle: 'Admin y operadores', factor: 1.3, semanas: 1 },
+                        { id: 'permisos', label: 'Varios roles con permisos finos', detalle: 'Cada uno ve lo suyo', factor: 1.6, semanas: 2 }
+                    ]
+                },
+                {
+                    id: 'extras',
+                    label: '¿Qué más necesita? (podés elegir varios)',
+                    tipo: 'multiple',
+                    opciones: [
+                        { id: 'reportes', label: 'Reportes y tablero', factor: 0.25, semanas: 1 },
+                        { id: 'facturacion', label: 'Facturación electrónica AFIP', factor: 0.35, semanas: 1.5 },
+                        { id: 'migracion', label: 'Migrar datos de planillas existentes', factor: 0.2, semanas: 1 },
+                        { id: 'sucursales', label: 'Varias sucursales o depósitos', factor: 0.3, semanas: 1.5 },
+                        { id: 'movil', label: 'Uso desde el celular', factor: 0.3, semanas: 1.5 },
+                        { id: 'api', label: 'Conexión con otros sistemas', factor: 0.35, semanas: 1.5 }
+                    ]
+                }
+            ]
+        },
+
+        'Consultoría Cloud': {
+            label: 'Consultoría cloud',
+            base: null,
+            semanasBase: [1, 3],
+            preguntas: [
+                {
+                    id: 'objetivo',
+                    label: '¿Qué necesitás resolver?',
+                    tipo: 'unica',
+                    opciones: [
+                        { id: 'diagnostico', label: 'Un diagnóstico puntual', detalle: 'Revisar qué tenés y qué conviene' },
+                        { id: 'migracion', label: 'Migrar a la nube', detalle: 'Desde servidor propio u otro proveedor' },
+                        { id: 'costos', label: 'Bajar la factura mensual', detalle: 'Optimización de costos' },
+                        { id: 'arquitectura', label: 'Diseñar la infraestructura', detalle: 'Para un proyecto nuevo' }
+                    ]
+                }
+            ]
+        }
+    }
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -530,46 +697,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ============================================================
     // Calculadora de presupuesto orientativo
+    // Cada servicio muestra sus propias preguntas (ver PRECIOS arriba).
     // ============================================================
     const calcForm = document.getElementById('calc-form');
     if (calcForm) {
         const elTipo = document.getElementById('calc-tipo');
-        const elTamano = document.getElementById('calc-tamano');
-        const elTamanoGroup = document.getElementById('calc-tamano-group');
-        const elTamanoLabel = document.getElementById('calc-tamano-label');
-        const elExtras = document.getElementById('calc-extras');
+        const elPreguntas = document.getElementById('calc-preguntas');
         const elRange = document.getElementById('calc-range');
         const elTime = document.getElementById('calc-time');
+        const elResumen = document.getElementById('calc-resumen');
         const elCta = document.getElementById('calc-cta');
 
-        const estado = { tipo: null, tamano: null, extras: null };
+        let servicioActual = null;
+        const respuestas = {};
 
-        const fmt = (n) => {
-            // redondeo a la decena de miles para no fingir precisión
-            const r = Math.round(n / 10000) * 10000;
-            return '$' + r.toLocaleString('es-AR');
-        };
+        const fmt = (n) => '$' + (Math.round(n / 10000) * 10000).toLocaleString('es-AR');
 
-        const opcion = (grupo, valor, label, detalle) => {
-            const id = `${grupo}-${valor}`;
+        const crearOpcion = (grupo, opcion, multiple) => {
+            const id = `calc-${grupo}-${opcion.id}`;
             const wrap = document.createElement('label');
             wrap.className = 'calc-option';
             wrap.setAttribute('for', id);
 
             const input = document.createElement('input');
-            input.type = 'radio';
-            input.name = grupo;
+            input.type = multiple ? 'checkbox' : 'radio';
+            input.name = `calc-${grupo}`;
             input.id = id;
-            input.value = valor;
+            input.value = opcion.id;
+            input.dataset.grupo = grupo;
 
             const texto = document.createElement('span');
             texto.className = 'calc-option-text';
             const strong = document.createElement('strong');
-            strong.textContent = label;
+            strong.textContent = opcion.label;
             texto.appendChild(strong);
-            if (detalle) {
+            if (opcion.detalle) {
                 const small = document.createElement('span');
-                small.textContent = detalle;
+                small.textContent = opcion.detalle;
                 texto.appendChild(small);
             }
 
@@ -577,87 +741,167 @@ document.addEventListener('DOMContentLoaded', () => {
             return wrap;
         };
 
-        Object.entries(PRECIOS.tipos).forEach(([valor, cfg]) => {
-            elTipo.appendChild(opcion('calc-tipo', valor, cfg.label));
+        // Selector de servicio
+        Object.entries(PRECIOS.servicios).forEach(([valor, cfg]) => {
+            elTipo.appendChild(crearOpcion('servicio', { id: valor, label: cfg.label }, false));
         });
-        PRECIOS.tamanos.forEach((t) => {
-            elTamano.appendChild(opcion('calc-tamano', t.id, t.label, t.detalle));
-        });
-        PRECIOS.extras.forEach((e) => {
-            elExtras.appendChild(opcion('calc-extras', e.id, e.label));
-        });
+
+        const renderPreguntas = () => {
+            elPreguntas.innerHTML = '';
+            Object.keys(respuestas).forEach((k) => delete respuestas[k]);
+            if (!servicioActual) return;
+
+            PRECIOS.servicios[servicioActual].preguntas.forEach((preg) => {
+                const multiple = preg.tipo === 'multiple';
+                const fs = document.createElement('fieldset');
+                fs.className = 'calc-group';
+
+                const legend = document.createElement('legend');
+                legend.textContent = preg.label;
+                fs.appendChild(legend);
+
+                const cont = document.createElement('div');
+                cont.className = 'calc-options';
+                preg.opciones.forEach((o) => cont.appendChild(crearOpcion(preg.id, o, multiple)));
+                fs.appendChild(cont);
+
+                elPreguntas.appendChild(fs);
+                if (multiple) respuestas[preg.id] = [];
+            });
+        };
+
+        const buscarOpcion = (pregId, opId) => {
+            const preg = PRECIOS.servicios[servicioActual].preguntas.find((x) => x.id === pregId);
+            return preg ? preg.opciones.find((o) => o.id === opId) : null;
+        };
+
+        // Devuelve el detalle elegido, en texto, para el resumen y el correo
+        const detalleElegido = () => {
+            if (!servicioActual) return [];
+            return PRECIOS.servicios[servicioActual].preguntas.map((preg) => {
+                const r = respuestas[preg.id];
+                if (preg.tipo === 'multiple') {
+                    const labels = (r || []).map((id) => buscarOpcion(preg.id, id)?.label).filter(Boolean);
+                    return { pregunta: preg.label, valor: labels.length ? labels.join(', ') : 'Ninguno' };
+                }
+                const op = r ? buscarOpcion(preg.id, r) : null;
+                return op ? { pregunta: preg.label, valor: op.label } : null;
+            }).filter(Boolean);
+        };
+
+        const pintarResumen = () => {
+            elResumen.innerHTML = '';
+            detalleElegido().forEach((d) => {
+                const li = document.createElement('li');
+                const k = document.createElement('span');
+                k.textContent = d.pregunta.replace(/ \(podés elegir var[ií]a?o?s?\)/i, '');
+                const v = document.createElement('strong');
+                v.textContent = d.valor;
+                li.append(k, v);
+                elResumen.appendChild(li);
+            });
+        };
 
         const calcular = () => {
-            const { tipo, tamano, extras } = estado;
-
-            if (!tipo) {
-                elRange.textContent = 'Elegí una opción para empezar';
+            if (!servicioActual) {
+                elRange.textContent = 'Elegí un servicio para empezar';
                 elTime.textContent = '';
+                elResumen.innerHTML = '';
                 return;
             }
 
-            const cfgTipo = PRECIOS.tipos[tipo];
+            const cfg = PRECIOS.servicios[servicioActual];
+            pintarResumen();
 
             // La consultoría cloud no se presupuesta por alcance cerrado
-            if (cfgTipo.base === null) {
-                elTamanoGroup.style.display = 'none';
+            if (cfg.base === null) {
                 elRange.textContent = 'Se cotiza por hora o por proyecto';
-                elTime.textContent = 'Depende del alcance del relevamiento. Escribinos y lo definimos en una charla.';
+                elTime.textContent = 'Depende del relevamiento. Escribinos y lo definimos en una charla de 20 minutos.';
                 return;
             }
 
-            elTamanoGroup.style.display = '';
-            elTamanoLabel.textContent = tipo === 'Tienda Online'
-                ? '¿Cuántos productos aproximadamente?'
-                : '¿Qué tamaño tiene el proyecto?';
-
-            if (!tamano || !extras) {
-                elRange.textContent = 'Completá las tres preguntas';
+            const faltan = cfg.preguntas.filter((p) => p.tipo === 'unica' && !respuestas[p.id]);
+            if (faltan.length) {
+                elRange.textContent = faltan.length === 1
+                    ? 'Falta una respuesta'
+                    : `Faltan ${faltan.length} respuestas`;
                 elTime.textContent = '';
                 return;
             }
 
-            const cfgTamano = PRECIOS.tamanos.find((t) => t.id === tamano);
-            const cfgExtras = PRECIOS.extras.find((e) => e.id === extras);
+            let factor = 1;
+            let bonus = 0;
+            let semanas = 0;
 
-            const centro = cfgTipo.base * cfgTamano.factor * cfgExtras.factor;
-            // El piso nunca puede quedar por debajo del "desde" publicado
-            const min = Math.max(cfgTipo.base, centro * (1 - PRECIOS.margen));
+            cfg.preguntas.forEach((preg) => {
+                if (preg.tipo === 'multiple') {
+                    (respuestas[preg.id] || []).forEach((opId) => {
+                        const o = buscarOpcion(preg.id, opId);
+                        if (!o) return;
+                        bonus += o.factor || 0;
+                        semanas += o.semanas || 0;
+                    });
+                } else {
+                    const o = buscarOpcion(preg.id, respuestas[preg.id]);
+                    if (!o) return;
+                    factor *= o.factor || 1;
+                    semanas += o.semanas || 0;
+                }
+            });
+
+            const centro = cfg.base * factor * (1 + bonus);
+            // El piso nunca baja del "desde" publicado
+            const min = Math.max(cfg.base, centro * (1 - PRECIOS.margen));
             const max = centro * (1 + PRECIOS.margen);
 
-            const semMin = cfgTipo.semanas[0] + cfgExtras.semanasExtra;
-            const semMax = cfgTipo.semanas[1] + cfgExtras.semanasExtra;
+            const semMin = Math.round(cfg.semanasBase[0] + semanas);
+            const semMax = Math.round(cfg.semanasBase[1] + semanas);
 
             elRange.textContent = `${fmt(min)} a ${fmt(max)}`;
-            elTime.textContent = `Plazo estimado: ${semMin} a ${semMax} semanas.`;
+            elTime.textContent = semMin === semMax
+                ? `Plazo estimado: unas ${semMin} semanas.`
+                : `Plazo estimado: ${semMin} a ${semMax} semanas.`;
         };
 
         calcForm.addEventListener('change', (e) => {
-            const { name, value } = e.target;
-            if (name === 'calc-tipo') estado.tipo = value;
-            if (name === 'calc-tamano') estado.tamano = value;
-            if (name === 'calc-extras') estado.extras = value;
+            const input = e.target;
+            if (input.name === 'calc-servicio') {
+                servicioActual = input.value;
+                renderPreguntas();
+                calcular();
+                return;
+            }
+            const grupo = input.dataset.grupo;
+            if (!grupo) return;
+            if (input.type === 'checkbox') {
+                const lista = respuestas[grupo] || [];
+                respuestas[grupo] = input.checked
+                    ? [...lista, input.value]
+                    : lista.filter((v) => v !== input.value);
+            } else {
+                respuestas[grupo] = input.value;
+            }
             calcular();
         });
 
-        // El CTA lleva al formulario con el servicio ya elegido y un
-        // mensaje armado con lo que respondió, para no repetir la info.
+        // Lleva al formulario con el servicio elegido y el detalle completo
+        // escrito en el mensaje, para que no tenga que repetirlo.
         elCta.addEventListener('click', () => {
-            if (!estado.tipo) return;
-            setService(estado.tipo);
+            if (!servicioActual) return;
+            setService(servicioActual);
 
             const mensaje = document.getElementById('form-message');
-            if (!mensaje || mensaje.value.trim() !== '') return;
+            if (!mensaje) return;
 
-            const cfgTipo = PRECIOS.tipos[estado.tipo];
-            const partes = [`Hola, usé la calculadora del sitio: ${cfgTipo.label}`];
-            if (estado.tamano) {
-                partes.push(`tamaño ${PRECIOS.tamanos.find((t) => t.id === estado.tamano).label.toLowerCase()}`);
+            const cfg = PRECIOS.servicios[servicioActual];
+            const lineas = [`Consulta desde la calculadora — ${cfg.label}`, ''];
+            detalleElegido().forEach((d) => {
+                lineas.push(`• ${d.pregunta.replace(/ \(podés elegir var[ií]a?o?s?\)/i, '')}: ${d.valor}`);
+            });
+            if (elRange.textContent && cfg.base !== null) {
+                lineas.push('', `Estimación que me mostró el sitio: ${elRange.textContent}`);
             }
-            if (estado.extras) {
-                partes.push(`integraciones: ${PRECIOS.extras.find((x) => x.id === estado.extras).label.toLowerCase()}`);
-            }
-            mensaje.value = partes.join(', ') + '.';
+            mensaje.value = lineas.join('\n');
         });
     }
 

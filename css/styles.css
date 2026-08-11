@@ -2446,3 +2446,66 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: none; }
     text-decoration: underline;
     text-underline-offset: 3px;
 }
+
+/* --- Calculadora: preguntas dinámicas y resumen --- */
+#calc-preguntas {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+}
+
+#calc-preguntas:not(:empty) {
+    margin-top: 1.75rem;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--hairline);
+}
+
+/* Marca visual del check en las preguntas de opción múltiple */
+.calc-option:has(input[type="checkbox"]) .calc-option-text strong::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 0.5rem;
+    vertical-align: -2px;
+    border: 1.5px solid var(--field-border);
+    border-radius: 4px;
+    transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.calc-option:has(input[type="checkbox"]:checked) .calc-option-text strong::before {
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: inset 0 0 0 2px var(--bg-surface);
+}
+
+.calc-resumen {
+    list-style: none;
+    margin: 0.75rem 0 0;
+    padding: 0.85rem 0 0;
+    border-top: 1px solid var(--hairline);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.calc-resumen:empty {
+    display: none;
+}
+
+.calc-resumen li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    font-size: 0.82rem;
+    line-height: 1.4;
+}
+
+.calc-resumen li span {
+    color: var(--text-muted);
+}
+
+.calc-resumen li strong {
+    color: var(--text-main);
+    font-weight: 600;
+}
