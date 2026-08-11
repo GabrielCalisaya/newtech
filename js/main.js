@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'ssv',
             name: 'SSV — Seguridad Vial',
-            logo: 'img/logos/logo1.png',
+            logo: 'img/logos/logo1.webp',
             work: 'Quiz interactivo de Seguridad Vial desarrollado para ExpoJuy 2024, presentado en tótems para el público.',
             result: 'Muy buen recibimiento de quienes lo probaron en la expo.',
             url: 'https://gabrielcalisaya.github.io/Test-de-Seguridad-Vial/'
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'bite',
             name: 'BITE Accesorios',
-            logo: 'img/logos/logo2.png',
+            logo: 'img/logos/logo2.webp',
             work: 'Tienda en Tienda Nube: carga de productos e imágenes, código a medida y automatización de envíos por correo. Documentación y material de uso entregados al cliente.',
             result: 'E-commerce operativo con procesos de venta y envío optimizados.',
             url: 'https://biteaccesoriosoficial.mitiendanube.com/'
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'innoa',
             name: 'INNOA',
-            logo: 'img/logos/logo3.png',
+            logo: 'img/logos/logo3.webp',
             work: 'Desarrollo a demanda como partner técnico: chatbots, páginas web, integraciones y consultoría en tecnología cuando surgen proyectos (la web institucional es de INNOA; con ellos ejecutamos el desarrollo).',
             result: 'Proyectos entregados en conjunto: desde bots hasta sitios y soporte en distintas tecnologías.',
             url: 'https://innoajujuy.com/'
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'casa-jubilado',
             name: 'La Casa del Jubilado',
-            logo: 'img/logos/logo4.png',
+            logo: 'img/logos/logo4.webp',
             work: 'Sistema de recibos con Google Apps Script, automatización de altas (formularios que agendan jubilados), mejoras en flujos de recibos y sitio web con mantenimiento mensual.',
             result: 'Operativa digital más ordenada y menos trabajo manual para la institución.',
             url: 'https://lacasadeljubiladojujuy.com/'
@@ -47,15 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             id: 'lavanderia',
             name: 'Lavandería Esperanza',
-            logo: 'img/logos/logo5.png',
+            logo: 'img/logos/logo5.webp',
             work: 'Formulario de registro de ingreso de ropa y recibos internos automatizados con Google Apps Script (sin sitio web público).',
             result: 'Control diario de prendas y comprobantes sin planillas manuales.',
             url: ''
         },
         {
+            id: 'rrhh-working',
+            name: 'RRHH Working',
+            logo: 'img/logos/logo7.webp',
+            work: 'Plataforma web completa para la consultora: portal público de búsquedas laborales, postulación en línea con carga de CV y panel de gestión con roles diferenciados para el equipo. Incluye protección antispam, avisos automáticos por correo y SEO técnico.',
+            result: 'Las postulaciones dejaron de manejarse por correo y planillas: hoy entran ordenadas al panel, con seguimiento de estado y CVs descargables.',
+            url: 'https://www.rrhhworking.com.ar/'
+        },
+        {
             id: 'anuario',
             name: 'Kuntur Producciones / Anuario Jujuy',
-            logo: 'img/logos/logo6.png',
+            logo: 'img/logos/logo6.webp',
             work: 'Apps Unity con realidad aumentada para anuarios escolares; proyectos web con integraciones (incl. experiencia RA del álbum del Mundial, muy reconocida en Jujuy).',
             result: 'Experiencias inmersivas para instituciones y campañas de alto impacto local.',
             url: 'https://realidadaumentadaarg.com/'
@@ -92,6 +100,67 @@ document.addEventListener('DOMContentLoaded', () => {
 
     buildCarousel();
 
+    // --- Grilla de casos ---
+    // El portafolio deja de estar escondido detrás de logos en escala de
+    // grises: cada caso se muestra con nombre, trabajo y resultado.
+    const buildCases = () => {
+        const grid = document.getElementById('cases-grid');
+        if (!grid) return;
+
+        grid.innerHTML = '';
+        PORTFOLIO.forEach((p) => {
+            const card = document.createElement('article');
+            card.className = 'case-card glass-card fade-in-up';
+
+            const head = document.createElement('div');
+            head.className = 'case-card-head';
+
+            const logo = document.createElement('img');
+            logo.src = p.logo;
+            logo.alt = '';
+            logo.loading = 'lazy';
+            logo.className = 'case-card-logo';
+            head.appendChild(logo);
+
+            const title = document.createElement('h3');
+            title.className = 'case-card-title';
+            title.textContent = p.name;
+            head.appendChild(title);
+
+            const work = document.createElement('p');
+            work.className = 'case-card-work';
+            work.textContent = p.work;
+
+            const result = document.createElement('p');
+            result.className = 'case-card-result';
+            result.textContent = p.result;
+
+            const actions = document.createElement('div');
+            actions.className = 'case-card-actions';
+
+            if (p.url) {
+                const link = document.createElement('a');
+                link.className = 'case-card-link';
+                link.href = p.url;
+                link.target = '_blank';
+                link.rel = 'noopener';
+                link.innerHTML = 'Ver proyecto <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>';
+                link.setAttribute('aria-label', `Ver el proyecto de ${p.name} (se abre en una pestaña nueva)`);
+                actions.appendChild(link);
+            } else {
+                const note = document.createElement('span');
+                note.className = 'case-card-note';
+                note.textContent = 'Herramienta interna, sin sitio público';
+                actions.appendChild(note);
+            }
+
+            card.append(head, work, result, actions);
+            grid.appendChild(card);
+        });
+    };
+
+    buildCases();
+
     const caseModal = document.getElementById('case-modal');
     const caseModalClose = document.getElementById('case-modal-close');
     const caseModalLabel = document.getElementById('case-modal-label');
@@ -101,8 +170,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const caseModalLink = document.getElementById('case-modal-link');
     const caseModalCta = document.getElementById('case-modal-cta');
 
+    // --- Gestión de foco y scroll compartida por menú y modales ---
+    let lastFocused = null;
+    let scrollLocks = 0;
+
+    const lockScroll = () => {
+        scrollLocks += 1;
+        document.body.style.overflow = 'hidden';
+    };
+
+    const unlockScroll = () => {
+        scrollLocks = Math.max(0, scrollLocks - 1);
+        if (scrollLocks === 0) document.body.style.overflow = '';
+    };
+
+    const FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+
+    // Mantiene el foco dentro del contenedor mientras esté abierto.
+    const trapFocus = (container) => (e) => {
+        if (e.key !== 'Tab') return;
+        const items = [...container.querySelectorAll(FOCUSABLE)]
+            .filter((el) => el.offsetParent !== null || el === document.activeElement);
+        if (!items.length) return;
+        const first = items[0];
+        const last = items[items.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+        }
+    };
+
+    const caseTrap = () => trapFocus(caseModal);
+    let caseTrapHandler = null;
+
     const openCaseModal = (project) => {
         if (!caseModal || !project) return;
+        lastFocused = document.activeElement;
         caseModalLogo.src = project.logo;
         caseModalLogo.alt = `Proyecto ${project.name}`;
         if (caseModalLabel) caseModalLabel.textContent = project.name;
@@ -116,22 +222,29 @@ document.addEventListener('DOMContentLoaded', () => {
             caseModalLink.style.display = 'none';
         }
 
-        if (caseModalCta) {
-            caseModalCta.addEventListener('click', () => closeCaseModal(), { once: true });
-        }
-
         caseModal.removeAttribute('hidden');
         caseModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        lockScroll();
+        caseTrapHandler = caseTrap();
+        document.addEventListener('keydown', caseTrapHandler);
         caseModalClose?.focus();
     };
 
     const closeCaseModal = () => {
-        if (!caseModal) return;
+        if (!caseModal || !caseModal.classList.contains('active')) return;
         caseModal.classList.remove('active');
         caseModal.setAttribute('hidden', '');
-        document.body.style.overflow = '';
+        unlockScroll();
+        if (caseTrapHandler) {
+            document.removeEventListener('keydown', caseTrapHandler);
+            caseTrapHandler = null;
+        }
+        lastFocused?.focus();
     };
+
+    // Listener registrado una sola vez. Antes se agregaba dentro de
+    // openCaseModal, acumulando uno por cada apertura.
+    if (caseModalCta) caseModalCta.addEventListener('click', () => closeCaseModal());
 
     if (caseModalClose) caseModalClose.addEventListener('click', closeCaseModal);
     if (caseModal) {
@@ -149,6 +262,68 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // El contador de proyectos sale del array, no de un número escrito a mano.
+    const statProjects = document.getElementById('stat-projects');
+    if (statProjects) statProjects.textContent = String(PORTFOLIO.length);
+
+    // --- Terminal del hero: tipeo progresivo ---
+    // El bloque de código ya está en el HTML (así se ve aunque falle el JS
+    // y no genera salto de layout). Acá solo se revela carácter por carácter.
+    const heroCode = document.querySelector('.hero-glass-card .card-body pre code');
+    const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (heroCode && !sinMovimiento) {
+        const nodos = [];
+        const recolectar = (el) => {
+            el.childNodes.forEach((n) => {
+                if (n.nodeType === Node.TEXT_NODE) nodos.push(n);
+                else recolectar(n);
+            });
+        };
+        recolectar(heroCode);
+
+        const textos = nodos.map((n) => n.nodeValue);
+        const total = textos.reduce((s, t) => s + t.length, 0);
+        nodos.forEach((n) => { n.nodeValue = ''; });
+
+        const caret = document.createElement('span');
+        caret.className = 'type-caret';
+        caret.setAttribute('aria-hidden', 'true');
+        heroCode.appendChild(caret);
+
+        let i = 0;
+        let nodo = 0;
+        let pos = 0;
+
+        const escribir = () => {
+            // 3 caracteres por cuadro: rápido de leer, sin sensación de espera
+            for (let k = 0; k < 3 && i < total; k += 1) {
+                while (nodo < textos.length && pos >= textos[nodo].length) {
+                    nodo += 1;
+                    pos = 0;
+                }
+                if (nodo >= textos.length) break;
+                nodos[nodo].nodeValue += textos[nodo][pos];
+                pos += 1;
+                i += 1;
+            }
+            if (i < total) requestAnimationFrame(escribir);
+            else setTimeout(() => caret.remove(), 1200);
+        };
+
+        // Arranca cuando la tarjeta entra en pantalla
+        const heroCard = document.querySelector('.hero-glass-card');
+        const obs = new IntersectionObserver((entries, o) => {
+            entries.forEach((e) => {
+                if (e.isIntersecting) {
+                    o.disconnect();
+                    setTimeout(() => requestAnimationFrame(escribir), 350);
+                }
+            });
+        }, { threshold: 0.3 });
+        if (heroCard) obs.observe(heroCard);
+    }
 
     const themeBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')].filter(Boolean);
     const metaTheme = document.querySelector('meta[name="theme-color"]');
@@ -175,9 +350,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const mobileLinks = document.querySelectorAll('.mobile-link, .mobile-btn');
 
     const setMenu = (open) => {
+        const wasOpen = mobileMenu.classList.contains('active');
+        if (open === wasOpen) return;
         mobileMenu.classList.toggle('active', open);
-        document.body.style.overflow = open ? 'hidden' : '';
+        if (open) lockScroll(); else unlockScroll();
         if (hamburger) hamburger.setAttribute('aria-expanded', String(open));
+        if (!open) hamburger?.focus();
     };
 
     if (hamburger) hamburger.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('active')));
@@ -243,11 +421,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.15 });
     fadeElements.forEach((el) => fadeObserver.observe(el));
 
+    // Escalonado reducido de 0.08s a 0.04s: con el anterior, al scrollear a
+    // velocidad normal las últimas tarjetas seguían invisibles.
     document.querySelectorAll('.services-grid, .faq-grid, .process-steps').forEach((grid) => {
         Array.from(grid.children).forEach((child, i) => {
-            child.style.transitionDelay = `${(i % 8) * 0.08}s`;
+            child.style.transitionDelay = `${(i % 8) * 0.04}s`;
         });
     });
+
+    // El carrusel animaba en bucle incluso fuera de la pantalla.
+    const carouselContainer = document.querySelector('.carousel-container');
+    if (carouselContainer) {
+        const track = carouselContainer.querySelector('.carousel-track');
+        new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (track) track.style.animationPlayState = entry.isIntersecting ? 'running' : 'paused';
+            });
+        }, { threshold: 0 }).observe(carouselContainer);
+    }
 
     document.querySelectorAll('.service-card').forEach((card) => {
         card.addEventListener('pointermove', (e) => {
@@ -258,16 +449,45 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const formService = document.getElementById('form-service');
+    const serviceChip = document.getElementById('service-chip');
+    const serviceChipName = document.getElementById('service-chip-name');
+    const serviceChipClear = document.getElementById('service-chip-clear');
+
+    // Antes, al hacer clic en "Cotizar X" el select cambiaba en silencio y
+    // el usuario aterrizaba arriba del formulario sin notarlo.
+    const setService = (service) => {
+        if (!formService || !service) return;
+        const option = Array.from(formService.options).find((o) => o.value === service);
+        if (!option) return;
+        formService.value = service;
+        if (serviceChip && serviceChipName) {
+            serviceChipName.textContent = option.textContent;
+            serviceChip.classList.add('visible');
+        }
+    };
+
+    if (serviceChipClear) {
+        serviceChipClear.addEventListener('click', () => {
+            serviceChip.classList.remove('visible');
+            if (formService) formService.selectedIndex = 0;
+        });
+    }
 
     document.querySelectorAll('.service-card[data-service]').forEach((card) => {
         const cta = card.querySelector('.service-cta');
         if (!cta) return;
-        cta.addEventListener('click', () => {
-            const service = card.dataset.service;
-            if (formService && service) {
-                const option = Array.from(formService.options).find((o) => o.value === service);
-                if (option) formService.value = service;
-            }
+        cta.addEventListener('click', () => setService(card.dataset.service));
+    });
+
+    // El mensaje de WhatsApp toma el servicio que el usuario venía mirando.
+    const waContextual = document.querySelectorAll('.btn-wa[data-wa]');
+    document.querySelectorAll('.service-card[data-service]').forEach((card) => {
+        card.addEventListener('mouseenter', () => {
+            const nombre = card.querySelector('h3')?.textContent?.trim();
+            if (!nombre) return;
+            waContextual.forEach((el) => {
+                el.href = waUrl(`Hola New Tech, vi la sección de ${nombre} y quiero consultar.`);
+            });
         });
     });
 
@@ -276,15 +496,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const successModal = document.getElementById('success-modal');
     const modalCloseBtn = document.getElementById('modal-close-btn');
 
+    let successTrapHandler = null;
+
     const openSuccessModal = () => {
+        lastFocused = document.activeElement;
         successModal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        lockScroll();
+        successTrapHandler = trapFocus(successModal);
+        document.addEventListener('keydown', successTrapHandler);
         if (modalCloseBtn) modalCloseBtn.focus();
     };
 
     const closeSuccessModal = () => {
+        if (!successModal.classList.contains('active')) return;
         successModal.classList.remove('active');
-        document.body.style.overflow = '';
+        unlockScroll();
+        if (successTrapHandler) {
+            document.removeEventListener('keydown', successTrapHandler);
+            successTrapHandler = null;
+        }
+        lastFocused?.focus();
     };
 
     if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeSuccessModal);
@@ -307,14 +538,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const requiredFields = contactForm.querySelectorAll('[required]');
             let valid = true;
+            let firstInvalid = null;
             requiredFields.forEach((field) => {
                 const ok = field.checkValidity() && field.value.trim() !== '';
                 field.classList.toggle('invalid', !ok);
-                if (!ok) valid = false;
+                field.setAttribute('aria-invalid', String(!ok));
+                field.closest('.form-group')?.classList.toggle('has-error', !ok);
+                if (!ok) {
+                    valid = false;
+                    if (!firstInvalid) firstInvalid = field;
+                }
             });
             if (!valid) {
-                formStatus.textContent = 'Por favor completá los campos requeridos correctamente.';
+                formStatus.textContent = 'Revisá los campos marcados en rojo.';
                 formStatus.className = 'form-status error';
+                // Llevar al usuario al primer campo con error: antes el aviso
+                // aparecía al pie y el campo podía estar fuera de pantalla.
+                firstInvalid?.focus();
+                firstInvalid?.scrollIntoView({ block: 'center', behavior: 'smooth' });
                 return;
             }
 

@@ -60,21 +60,23 @@
     }
     </script>
 
-    <link rel="stylesheet" href="css/fonts.css?v=4">
-    <style>
-        html, body, p, span, a, li, input, select, textarea, button, label {
-            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-        }
-        h1, h2, h3, h4, .logo, .logo span, .hero-title, .hero-title span, .section-header h2, .section-header h2 span, .modal-title {
-            font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif !important;
-        }
-        pre, code, .card-body {
-            font-family: 'JetBrains Mono', 'SFMono-Regular', Consolas, Menlo, monospace !important;
-        }
-        .stat-num { font-family: 'Sora', sans-serif !important; }
-    </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css?v=6">
+    <!-- Solo las tres fuentes que aparecen en el primer render. El resto
+         las descarga fonts.css sin bloquear. -->
+    <link rel="preload" href="fonts/outfit-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/sora-800.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin>
+
+    <link rel="stylesheet" href="css/fonts.css?v=5">
+    <link rel="stylesheet" href="css/styles.css?v=8">
+
+    <!-- Font Awesome sin bloquear el render: se aplica al terminar de cargar.
+         Los iconos son decorativos, así que aparecen un instante después
+         en lugar de retrasar todo el texto de la página. -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    </noscript>
     <!-- Vercel Web Analytics -->
     <script>
         window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -94,7 +96,7 @@
     </div>
 
     <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-    <a href="#inicio" class="skip-link">Saltar al contenido</a>
+    <a href="#main" class="skip-link">Saltar al contenido</a>
 
     <header class="navbar" id="navbar">
         <div class="container nav-container">
@@ -139,10 +141,14 @@
         </div>
     </div>
 
+    <main id="main">
+
     <section class="hero" id="inicio">
         <div class="hero-bg-gradient" aria-hidden="true"></div>
         <div class="container hero-container">
-            <div class="hero-content fade-in-up">
+            <!-- Sin .fade-in-up: está sobre el pliegue y no debe esperar
+                 al IntersectionObserver para hacerse visible. -->
+            <div class="hero-content">
                 <span class="hero-eyebrow"><span class="pulse-dot"></span> Disponible para nuevos proyectos</span>
                 <h1 class="hero-title">Escalá tu negocio con <span class="highlight">desarrollo web y herramientas</span> a medida</h1>
                 <p class="hero-subtitle">En New Tech diseñamos sitios, tiendas online, sistemas de gestión y automatizaciones que se adaptan a tu operación. Consultoría en la nube cuando tu proyecto lo necesita. Trabajamos con empresas de todo el país y proyectos remotos, con foco en resultados y comunicación directa.</p>
@@ -158,17 +164,19 @@
                         <span class="stat-num stat-static">&lt; 24 h</span>
                         <span class="stat-label">Respuesta a consultas</span>
                     </div>
+                    <!-- El número sale del array PORTFOLIO: si sumás un caso,
+                         se actualiza solo. -->
                     <div class="stat">
-                        <span class="stat-num stat-static">A medida</span>
-                        <span class="stat-label">Cada proyecto es único</span>
+                        <span class="stat-num stat-static" id="stat-projects">7</span>
+                        <span class="stat-label">Proyectos entregados</span>
                     </div>
                     <div class="stat">
-                        <span class="stat-num stat-static">100%</span>
-                        <span class="stat-label">Enfoque personalizado</span>
+                        <span class="stat-num stat-static">5</span>
+                        <span class="stat-label">Servicios en un solo equipo</span>
                     </div>
                 </div>
             </div>
-            <div class="hero-visual fade-in-up delay-1">
+            <div class="hero-visual">
                 <div class="glass-card hero-glass-card">
                     <div class="card-header">
                         <div class="dot dot-red"></div>
@@ -190,10 +198,21 @@
         </div>
     </section>
 
-    <section class="trusted-by fade-in-up delay-2" id="proyectos">
+    <section class="cases" id="proyectos">
         <div class="container">
-            <p class="trusted-title">Proyectos que confían en New Tech</p>
-            <p class="trusted-hint">Hacé clic en cualquier logo para ver el caso.</p>
+            <div class="section-header fade-in-up">
+                <span class="section-badge">Proyectos</span>
+                <h2>Trabajos entregados</h2>
+                <p>Casos reales, con lo que construimos y lo que cambió para cada cliente.</p>
+            </div>
+            <!-- Las tarjetas se generan desde el array PORTFOLIO de js/main.js -->
+            <div class="cases-grid" id="cases-grid"></div>
+        </div>
+    </section>
+
+    <section class="trusted-by fade-in-up">
+        <div class="container">
+            <p class="trusted-title">Confían en New Tech</p>
         </div>
         <div class="carousel-container">
             <div class="carousel-track" id="carousel-track"></div>
@@ -248,7 +267,7 @@
         </div>
     </section>
 
-    <section class="process">
+    <section class="process" id="proceso">
         <div class="container">
             <div class="section-header fade-in-up">
                 <span class="section-badge">Cómo trabajamos</span>
@@ -322,6 +341,42 @@
         </div>
     </section>
 
+    <!-- ===================================================================
+         TESTIMONIOS — sección lista, sin publicar.
+
+         Está comentada a propósito: no invento citas de clientes.
+         Para activarla:
+           1. Reemplazá los tres bloques con testimonios reales.
+           2. Borrá esta línea de apertura del comentario y la de cierre.
+         Con dos testimonios alcanza. Pedilos por WhatsApp: "¿me tirás dos
+         líneas de cómo te resultó trabajar con nosotros?" suele alcanzar.
+    ====================================================================
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in-up">
+                <span class="section-badge">Lo que dicen</span>
+                <h2>Clientes que ya trabajaron con nosotros</h2>
+            </div>
+            <div class="testimonials-grid">
+                <figure class="testimonial glass-card fade-in-up">
+                    <blockquote>TEXTO DEL TESTIMONIO</blockquote>
+                    <figcaption>
+                        <strong>NOMBRE Y APELLIDO</strong>
+                        <span>CARGO — EMPRESA</span>
+                    </figcaption>
+                </figure>
+                <figure class="testimonial glass-card fade-in-up">
+                    <blockquote>TEXTO DEL TESTIMONIO</blockquote>
+                    <figcaption>
+                        <strong>NOMBRE Y APELLIDO</strong>
+                        <span>CARGO — EMPRESA</span>
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+    ==================================================================== -->
+
     <section class="faq" id="faq">
         <div class="container">
             <div class="section-header fade-in-up">
@@ -331,74 +386,74 @@
             </div>
             <div class="faq-grid">
                 <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
                         <span>¿Cuánto cuesta un proyecto?</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
                         <p>El precio depende del alcance, integraciones y plazos. Tras una breve charla te enviamos una cotización personalizada sin compromiso. Cada proyecto es distinto y lo presupuestamos en función de lo que realmente necesitás.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
                         <span>¿Cuánto tiempo demora un sitio o tienda online?</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
                         <p>Los plazos dependen de la complejidad y de la prioridad que le des al proyecto. Una landing puede avanzar en pocos días; un e-commerce o sistema de gestión suele llevar varias semanas. En la propuesta te damos fechas realistas según tu caso.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
                         <span>¿Qué formas de pago aceptan?</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
                         <p>Trabajamos con seña al iniciar y saldo por etapas o al finalizar, según el proyecto. Los detalles los acordamos en la propuesta para que tengas claridad desde el primer día.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
                         <span>¿Incluyen dominio y hosting?</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
                         <p>Podemos orientarte en la compra del dominio y configurar el hosting que mejor se adapte a tu presupuesto y tráfico. Si ya tenés dominio, lo integramos sin problema.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
                         <span>¿Qué necesito tener listo para empezar?</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
                         <p>En general: una idea clara del objetivo, textos o borradores, imágenes o logo si los tenés, y acceso a dominio si ya existe. No hace falta tener todo perfecto: te guiamos en lo que falte.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">
                         <span>¿Tengo que pagar mantenimiento mensual?</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
                         <p>No es obligatorio. Te entregamos el proyecto optimizado y configurado. Ofrecemos planes opcionales de mantenimiento y soporte si querés despreocuparte de actualizaciones, seguridad y cambios.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">
                         <span>¿Puedo administrar mi tienda yo mismo?</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-a7" role="region" aria-labelledby="faq-q7">
                         <p>Sí. Las tiendas incluyen panel autoadministrable y capacitación para que gestiones productos y pedidos sin depender de nosotros para el día a día.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false">
+                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">
                         <span>¿Los bots de WhatsApp sirven para mi negocio?</span>
                         <i class="fa-solid fa-chevron-down"></i>
                     </button>
-                    <div class="faq-answer">
+                    <div class="faq-answer" id="faq-a8" role="region" aria-labelledby="faq-q8">
                         <p>Si recibís consultas repetitivas (precios, horarios, catálogo), un bot responde al instante y te ahorra horas, mejorando la experiencia del cliente y las oportunidades de venta.</p>
                     </div>
                 </div>
@@ -425,17 +480,23 @@
                 </div>
                 <div class="contact-form-container">
                     <form id="contact-form" class="contact-form" novalidate>
+                        <div class="service-chip" id="service-chip">
+                            <span>Consultando por: <strong id="service-chip-name"></strong></span>
+                            <button type="button" id="service-chip-clear" aria-label="Quitar el servicio seleccionado">&times;</button>
+                        </div>
                         <div class="form-group">
                             <label for="form-name">Nombre</label>
-                            <input type="text" id="form-name" name="name" placeholder="Tu nombre completo" required autocomplete="name">
+                            <input type="text" id="form-name" name="name" placeholder="Tu nombre completo" required autocomplete="name" aria-describedby="err-name">
+                            <span class="field-error" id="err-name">Escribí tu nombre para que sepamos cómo dirigirnos a vos.</span>
                         </div>
                         <div class="form-group">
                             <label for="form-email">Correo electrónico</label>
-                            <input type="email" id="form-email" name="email" placeholder="nombre@correo.com" required autocomplete="email">
+                            <input type="email" id="form-email" name="email" placeholder="nombre@correo.com" required autocomplete="email" aria-describedby="err-email">
+                            <span class="field-error" id="err-email">Revisá el correo: parece que falta algo.</span>
                         </div>
                         <div class="form-group">
-                            <label for="form-phone">WhatsApp / Teléfono</label>
-                            <input type="tel" id="form-phone" name="phone" placeholder="Ej: 388 123-4567" required autocomplete="tel">
+                            <label for="form-phone">WhatsApp / Teléfono <span class="label-optional">(opcional)</span></label>
+                            <input type="tel" id="form-phone" name="phone" placeholder="Ej: 388 123-4567" autocomplete="tel">
                         </div>
                         <div class="form-group">
                             <label for="form-service">Servicio requerido</label>
@@ -450,7 +511,8 @@
                         </div>
                         <div class="form-group">
                             <label for="form-message">Mensaje / detalles del proyecto</label>
-                            <textarea id="form-message" name="message" rows="4" placeholder="Contanos brevemente qué necesitás..." required></textarea>
+                            <textarea id="form-message" name="message" rows="4" placeholder="Contanos brevemente qué necesitás..." required aria-describedby="err-message"></textarea>
+                            <span class="field-error" id="err-message">Contanos aunque sea en una línea qué necesitás.</span>
                         </div>
                         <button type="submit" class="btn btn-primary btn-submit">
                             <span class="btn-text">Enviar mensaje</span>
@@ -464,6 +526,8 @@
             </div>
         </div>
     </section>
+
+    </main>
 
     <footer class="footer">
         <div class="container">
@@ -542,7 +606,7 @@
         </div>
     </div>
 
-    <script src="js/main.js?v=7"></script>
+    <script src="js/main.js?v=9"></script>
 </body>
 
 </html>
