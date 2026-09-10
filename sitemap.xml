@@ -1,15 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://www.newtech.net.ar/</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newtech.net.ar/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newtech.net.ar/en/" />
+  </url>
+  <url>
+    <loc>https://www.newtech.net.ar/en/</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newtech.net.ar/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newtech.net.ar/en/" />
   </url>
   <url>
     <loc>https://www.newtech.net.ar/privacidad.html</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-09-10</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newtech.net.ar/privacidad.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newtech.net.ar/en/privacy.html" />
+  </url>
+  <url>
+    <loc>https://www.newtech.net.ar/en/privacy.html</loc>
+    <lastmod>2026-09-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.newtech.net.ar/privacidad.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.newtech.net.ar/en/privacy.html" />
   </url>
 </urlset>

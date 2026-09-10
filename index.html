@@ -1,627 +1,346 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="azQnxtsfqZK5R3S_e9ORnPbOGqTCjPmxXKhi3pUlKVI" />
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-NFLJ33HR');</script>
-    <!-- End Google Tag Manager -->
-    <meta name="theme-color" content="#0d1117">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="google-site-verification" content="azQnxtsfqZK5R3S_e9ORnPbOGqTCjPmxXKhi3pUlKVI">
+    <meta name="theme-color" content="#f2efe6">
+    <title>Gabriel Calisaya | Sistemas y desarrollo para negocios</title>
+    <meta name="description" content="Analizo cómo funciona tu negocio y construyo sistemas, automatizaciones y experiencias web que eliminan trabajo manual y ayudan a crecer. Desde Jujuy para Argentina y el mundo.">
     <link rel="canonical" href="https://www.newtech.net.ar/">
-    <script>
-        (function () {
-            try {
-                var saved = localStorage.getItem('theme');
-                var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-                document.documentElement.setAttribute('data-theme', theme);
-            } catch (e) {}
-        })();
-    </script>
-    <title>New Tech | Desarrollo web, herramientas y consultoría cloud</title>
-    <meta name="description"
-        content="New Tech — desarrollo web, tiendas online, sistemas a medida, automatización y consultoría cloud para empresas en Argentina y proyectos remotos.">
-
+    <link rel="alternate" hreflang="es" href="https://www.newtech.net.ar/">
+    <link rel="alternate" hreflang="en" href="https://www.newtech.net.ar/en/">
+    <link rel="alternate" hreflang="x-default" href="https://www.newtech.net.ar/">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.newtech.net.ar/">
-    <meta property="og:title" content="New Tech | Desarrollo web, herramientas y consultoría cloud">
-    <meta property="og:description"
-        content="Desarrollo web, tiendas online, sistemas a medida, automatización y consultoría cloud. Cotización sin compromiso.">
+    <meta property="og:title" content="Gabriel Calisaya — Tecnología que entiende el negocio">
+    <meta property="og:description" content="Diagnóstico operativo, sistemas a medida, automatización y desarrollo web para resolver fricciones reales.">
     <meta property="og:image" content="https://www.newtech.net.ar/img/logo.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="New Tech | Desarrollo web, herramientas y consultoría cloud">
-    <meta name="twitter:description"
-        content="Desarrollo web, tiendas online, sistemas a medida, automatización y consultoría cloud.">
-    <meta name="twitter:image" content="https://www.newtech.net.ar/img/logo.png">
-
     <link rel="icon" type="image/png" href="img/logo.png">
-
+    <link rel="preload" href="fonts/sora-800.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/outfit-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/fonts.css?v=5">
+    <link rel="stylesheet" href="css/site-v2.css?v=3">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "New Tech",
-      "image": "https://www.newtech.net.ar/img/logo.png",
-      "url": "https://www.newtech.net.ar/",
-      "telephone": "+5493885187080",
-      "description": "Desarrollo web, herramientas a medida, automatización y consultoría cloud.",
-      "areaServed": { "@type": "Country", "name": "Argentina" },
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Jujuy",
-        "addressCountry": "AR"
-      },
-      "sameAs": ["https://www.linkedin.com/in/gabriel-calisaya/"]
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://www.newtech.net.ar/#gabriel",
+          "name": "Gabriel Calisaya",
+          "jobTitle": "Consultor tecnológico y desarrollador full stack",
+          "url": "https://www.newtech.net.ar/",
+          "image": "https://www.newtech.net.ar/img/gabriel.webp",
+          "sameAs": ["https://www.linkedin.com/in/gabriel-calisaya/"]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://www.newtech.net.ar/#newtech",
+          "name": "New Tech",
+          "url": "https://www.newtech.net.ar/",
+          "founder": { "@id": "https://www.newtech.net.ar/#gabriel" },
+          "telephone": "+5493885187080",
+          "email": "contacto@newtech.net.ar",
+          "description": "Diagnóstico operativo, desarrollo web, automatización, sistemas a medida y consultoría cloud.",
+          "areaServed": ["Argentina", "Worldwide"],
+          "address": { "@type": "PostalAddress", "addressLocality": "San Salvador de Jujuy", "addressCountry": "AR" }
+        }
+      ]
     }
     </script>
-
-    <!-- Solo las tres fuentes que aparecen en el primer render. El resto
-         las descarga fonts.css sin bloquear. -->
-    <link rel="preload" href="fonts/outfit-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/sora-800.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin>
-
-    <link rel="stylesheet" href="css/fonts.css?v=5">
-    <link rel="stylesheet" href="css/styles.css?v=10">
-
-    <!-- Font Awesome sin bloquear el render: se aplica al terminar de cargar.
-         Los iconos son decorativos, así que aparecen un instante después
-         en lugar de retrasar todo el texto de la página. -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style"
-        onload="this.onload=null;this.rel='stylesheet'">
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    </noscript>
-    <!-- Vercel Web Analytics -->
-    <script>
-        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-    </script>
-    <script defer src="/_vercel/insights/script.js"></script>
 </head>
-
 <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NFLJ33HR"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <div class="aurora" aria-hidden="true">
-        <span class="aurora-blob blob-1"></span>
-        <span class="aurora-blob blob-2"></span>
-        <span class="aurora-blob blob-3"></span>
-    </div>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-    <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
-    <a href="#main" class="skip-link">Saltar al contenido</a>
-
-    <header class="navbar" id="navbar">
-        <div class="container nav-container">
-            <a href="#inicio" class="logo">
-                <div class="logo-icon"><i class="fa-solid fa-code"></i></div>
-                <span class="logo-text-new">New</span><span class="logo-text-tech">Tech</span>
-            </a>
-            <div class="nav-actions">
-                <nav class="nav-links" aria-label="Navegación principal">
-                    <a href="#inicio">Inicio</a>
-                    <a href="#proyectos">Proyectos</a>
-                    <a href="#servicios">Servicios</a>
-                    <a href="#nosotros">Nosotros</a>
-                    <a href="#calculadora">Precios</a>
-                    <a href="#faq">Preguntas</a>
-                    <a href="#contacto" class="btn btn-primary btn-nav">Pedir presupuesto</a>
-                </nav>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Cambiar tema">
-                    <i class="fa-solid fa-moon icon-moon"></i>
-                    <i class="fa-solid fa-sun icon-sun"></i>
-                </button>
-                <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false"
-                    aria-controls="mobile-menu">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
-    </header>
-
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="mobile-menu-content">
-            <button class="close-menu" id="close-menu" aria-label="Cerrar menú"><i class="fa-solid fa-xmark"></i></button>
-            <a href="#inicio" class="mobile-link">Inicio</a>
-            <a href="#proyectos" class="mobile-link">Proyectos</a>
-            <a href="#servicios" class="mobile-link">Servicios</a>
-            <a href="#nosotros" class="mobile-link">Nosotros</a>
-            <a href="#calculadora" class="mobile-link">Precios</a>
-            <a href="#faq" class="mobile-link">Preguntas</a>
-            <a href="#contacto" class="btn btn-primary mobile-btn">Pedir presupuesto</a>
-            <button class="theme-toggle theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Cambiar tema">
-                <i class="fa-solid fa-moon icon-moon"></i>
-                <i class="fa-solid fa-sun icon-sun"></i>
+    <header class="site-header" id="site-header">
+        <a class="wordmark" href="#inicio" aria-label="New Tech, inicio">
+            <img src="img/newtech-logo.png" alt="New Tech" width="506" height="250">
+        </a>
+        <nav class="desktop-nav" aria-label="Navegación principal">
+            <a href="#casos">Casos</a>
+            <a href="#metodo">Método</a>
+            <a href="#equipo">Quién soy</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+        <div class="header-tools">
+            <a class="language-link" href="en/" lang="en" aria-label="View in English">EN</a>
+            <button class="menu-button" type="button" aria-expanded="false" aria-controls="mobile-nav">
+                <span>Menú</span><span class="menu-glyph" aria-hidden="true"></span>
             </button>
         </div>
-    </div>
+        <nav class="mobile-nav" id="mobile-nav" aria-label="Navegación móvil" hidden>
+            <a href="#casos">Casos</a>
+            <a href="#metodo">Método</a>
+            <a href="#equipo">Quién soy</a>
+            <a href="#contacto">Contacto</a>
+            <a href="en/" lang="en">English version</a>
+        </nav>
+    </header>
 
-    <main id="main">
-
-    <section class="hero" id="inicio">
-        <div class="hero-bg-gradient" aria-hidden="true"></div>
-        <div class="container hero-container">
-            <!-- Sin .fade-in-up: está sobre el pliegue y no debe esperar
-                 al IntersectionObserver para hacerse visible. -->
-            <div class="hero-content">
-                <span class="hero-eyebrow"><span class="pulse-dot"></span> Disponibilidad inmediata &middot; empezamos esta semana</span>
-                <h1 class="hero-title">Escalá tu negocio con <span class="highlight">desarrollo web y herramientas</span> a medida</h1>
-                <p class="hero-subtitle">En New Tech diseñamos sitios, tiendas online, sistemas de gestión y automatizaciones que se adaptan a tu operación. Consultoría en la nube cuando tu proyecto lo necesita. Trabajamos con empresas de todo el país y proyectos remotos, con foco en resultados y comunicación directa.</p>
-                <div class="hero-buttons">
-                    <a href="#contacto" class="btn btn-primary">Pedir presupuesto</a>
-                    <a href="https://wa.me/5493885187080?text=Hola%20New%20Tech%2C%20quiero%20consultar%20por%20un%20proyecto%20de%20desarrollo%20web." class="btn btn-secondary btn-wa" target="_blank" rel="noopener" data-wa="Hola New Tech, quiero consultar por un proyecto de desarrollo web.">
-                        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                        <span>Escribinos por WhatsApp</span>
-                    </a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat">
-                        <span class="stat-num stat-static">&lt; 24 h</span>
-                        <span class="stat-label">Respuesta a consultas</span>
-                    </div>
-                    <!-- El número sale del array PORTFOLIO: si sumás un caso,
-                         se actualiza solo. -->
-                    <div class="stat">
-                        <span class="stat-num stat-static" id="stat-projects">7</span>
-                        <span class="stat-label">Proyectos entregados</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-num stat-static">5</span>
-                        <span class="stat-label">Servicios en un solo equipo</span>
-                    </div>
+    <main id="contenido">
+        <section class="hero" id="inicio">
+            <div class="hero-grid" aria-hidden="true"></div>
+            <div class="hero-copy">
+                <p class="overline">Jujuy · Argentina · Trabajo remoto global</p>
+                <h1>Encuentro lo que <em>frena</em> tu negocio.<br> Construyo lo que lo hace avanzar.</h1>
+                <p class="hero-lead">No empiezo ofreciendo una web o un sistema. Primero entiendo la operación, detecto el problema y recién entonces diseño la herramienta correcta.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#contacto">Hablemos de tu problema <span aria-hidden="true">↗</span></a>
+                    <a class="text-link" href="#casos">Ver cómo trabajo <span aria-hidden="true">↓</span></a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="glass-card hero-glass-card">
-                    <div class="card-header">
-                        <div class="dot dot-red"></div>
-                        <div class="dot dot-yellow"></div>
-                        <div class="dot dot-green"></div>
-                        <span class="card-filename">proyecto.js</span>
-                    </div>
-                    <div class="card-body">
-                        <pre><code><span class="code-keyword">const</span> <span class="code-var">proyecto</span> = {
-  <span class="code-prop">cliente</span>: <span class="code-string">"Tu negocio"</span>,
-  <span class="code-prop">stack</span>: [<span class="code-string">"web"</span>, <span class="code-string">"cloud"</span>],
-  <span class="code-prop">listo</span>: <span class="code-boolean">true</span>
-};
-
-<span class="code-function">lanzar</span>(proyecto);</code></pre>
-                    </div>
+            <div class="hero-aside">
+                <p class="index-label">Perfil / 001</p>
+                <div class="portrait-frame">
+                    <img src="img/gabriel.webp" alt="Gabriel Calisaya, fundador de New Tech" width="420" height="420">
+                    <span class="portrait-tag">Gabriel Calisaya</span>
                 </div>
+                <p>Consultoría operativa<br>+ desarrollo full stack</p>
             </div>
-        </div>
-    </section>
+            <p class="hero-stamp" aria-hidden="true">ANALIZAR / RESOLVER / ESCALAR</p>
+        </section>
 
-    <section class="cases" id="proyectos">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <span class="section-badge">Proyectos</span>
-                <h2>Trabajos entregados</h2>
-                <p>Casos reales, con lo que construimos y lo que cambió para cada cliente.</p>
+        <section class="frictions section-shell" id="fricciones" aria-labelledby="frictions-title">
+            <div class="section-index">
+                <span>01</span>
+                <p>Mapa de fricciones</p>
             </div>
-            <!-- Las tarjetas se generan desde el array PORTFOLIO de js/main.js -->
-            <div class="cases-grid" id="cases-grid"></div>
-        </div>
-    </section>
-
-    <section class="trusted-by fade-in-up">
-        <div class="container">
-            <p class="trusted-title">Confían en New Tech</p>
-        </div>
-        <div class="carousel-container">
-            <div class="carousel-track" id="carousel-track"></div>
-        </div>
-    </section>
-
-    <section class="why" id="nosotros">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <span class="section-badge">Por qué New Tech</span>
-                <h2>Tecnología con trato directo</h2>
-                <p>Una startup enfocada en construir software que resuelve problemas reales de negocio.</p>
+            <div class="frictions-copy">
+                <p class="eyebrow">Antes del código</p>
+                <h2 id="frictions-title">Los problemas digitales casi nunca empiezan en la pantalla.</h2>
+                <p>Empiezan en una consulta que nadie respondió, una planilla que ya no alcanza o una decisión tomada sin datos. Ahí comienza mi trabajo.</p>
             </div>
-            <div class="why-grid">
-                <div class="why-story glass-card fade-in-up">
-                    <h3>Nuestra historia</h3>
-                    <p>New Tech nació con una idea simple: que cualquier empresa pueda acceder a desarrollo web y herramientas digitales de calidad, sin procesos burocráticos ni intermediarios innecesarios.</p>
-                    <p>Detrás de la marca está un equipo técnico reducido con comunicación directa en cada etapa: desde la primera consulta hasta la entrega y el soporte. Eso nos permite mover rápido, adaptarnos a tu prioridad y cuidar cada detalle del proyecto.</p>
-                    <div class="founder">
-                        <img src="img/gabriel.webp" alt="Gabriel Calisaya, fundador de New Tech" class="founder-photo"
-                            width="120" height="120" loading="lazy">
-                        <div class="founder-info">
-                            <strong>Gabriel Calisaya</strong>
-                            <span>Fundador — desarrollo full stack y consultoría cloud</span>
-                            <span class="founder-location">San Salvador de Jujuy, Argentina</span>
+            <figure class="friction-map" aria-labelledby="map-caption">
+                <figcaption id="map-caption">Mapa de fricciones habituales en un negocio</figcaption>
+                <div class="map-axis map-axis-x" aria-hidden="true"></div>
+                <div class="map-axis map-axis-y" aria-hidden="true"></div>
+                <div class="map-core"><span>OPERACIÓN</span><strong>¿Dónde se pierde valor?</strong></div>
+                <div class="map-node node-queries"><span>01</span><strong>Consultas</strong><small>entran, se repiten, se pierden</small></div>
+                <div class="map-node node-stock"><span>02</span><strong>Stock</strong><small>no coincide con la realidad</small></div>
+                <div class="map-node node-tasks"><span>03</span><strong>Tareas</strong><small>dependen de trabajo manual</small></div>
+                <div class="map-node node-data"><span>04</span><strong>Información</strong><small>llega tarde para decidir</small></div>
+                <svg class="map-lines" viewBox="0 0 900 560" role="img" aria-label="Conexiones entre la operación y cuatro fricciones de negocio">
+                    <path d="M450 280 L170 120"></path><path d="M450 280 L730 120"></path>
+                    <path d="M450 280 L180 450"></path><path d="M450 280 L720 450"></path>
+                    <circle cx="450" cy="280" r="126"></circle>
+                </svg>
+            </figure>
+        </section>
+
+        <section class="work section-shell" id="casos" aria-labelledby="work-title">
+            <div class="section-index section-index-light">
+                <span>02</span>
+                <p>Trabajo comprobable</p>
+            </div>
+            <header class="work-header">
+                <p class="eyebrow">Tres operaciones, tres problemas distintos</p>
+                <h2 id="work-title">El proyecto no es la tecnología.<br>Es el cambio que deja.</h2>
+            </header>
+
+            <article class="case-study case-study-featured">
+                <div class="case-number">01</div>
+                <div class="case-heading">
+                    <p>E-commerce · Desarrollo a medida</p>
+                    <h3>BITE Accesorios</h3>
+                </div>
+                <dl class="case-flow">
+                    <div><dt>Problema</dt><dd>Un catálogo que necesitaba personalización y avisos de envío más ágiles.</dd></div>
+                    <div><dt>Intervención</dt><dd>Tienda Nube configurada, código a medida y correos automatizados.</dd></div>
+                    <div><dt>Cambio</dt><dd>Una operación de venta y despacho más ordenada.</dd></div>
+                </dl>
+                <a href="https://biteaccesoriosoficial.mitiendanube.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar BITE Accesorios">Visitar proyecto ↗</a>
+            </article>
+
+            <article class="case-study">
+                <div class="case-number">02</div>
+                <div class="case-heading">
+                    <p>Institución · Automatización</p>
+                    <h3>La Casa del Jubilado</h3>
+                </div>
+                <dl class="case-flow">
+                    <div><dt>Problema</dt><dd>Altas, recibos e información sostenidos con demasiado trabajo manual.</dd></div>
+                    <div><dt>Intervención</dt><dd>Formularios, recibos y flujos automatizados con Apps Script.</dd></div>
+                    <div><dt>Cambio</dt><dd>Procesos cotidianos más simples y consistentes.</dd></div>
+                </dl>
+                <a href="https://lacasadeljubiladojujuy.com/" target="_blank" rel="noopener noreferrer" aria-label="Visitar La Casa del Jubilado">Visitar proyecto ↗</a>
+            </article>
+
+            <article class="case-study">
+                <div class="case-number">03</div>
+                <div class="case-heading">
+                    <p>RRHH · Producto digital</p>
+                    <h3>RRHH Working</h3>
+                </div>
+                <dl class="case-flow">
+                    <div><dt>Problema</dt><dd>Postulaciones dispersas entre correos y planillas sin seguimiento central.</dd></div>
+                    <div><dt>Intervención</dt><dd>Portal de empleos, panel con roles, estados, CVs y notificaciones.</dd></div>
+                    <div><dt>Cambio</dt><dd>Candidatos e información ordenados en un solo flujo.</dd></div>
+                </dl>
+                <a href="https://www.rrhhworking.com.ar/" target="_blank" rel="noopener noreferrer" aria-label="Visitar RRHH Working">Visitar proyecto ↗</a>
+            </article>
+        </section>
+
+        <section class="method section-shell" id="metodo" aria-labelledby="method-title">
+            <div class="section-index">
+                <span>03</span>
+                <p>Forma de trabajo</p>
+            </div>
+            <header class="method-intro">
+                <p class="eyebrow">Una secuencia, no una receta</p>
+                <h2 id="method-title">Entender antes de construir.</h2>
+                <p>La experiencia en operaciones, gestión y sistemas permite hacer preguntas distintas. Eso reduce supuestos, evita funciones innecesarias y mejora la adopción.</p>
+            </header>
+            <ol class="method-steps">
+                <li><span>01</span><strong>Observar</strong><p>Cómo entra el trabajo, quién lo toca y dónde se demora.</p></li>
+                <li><span>02</span><strong>Definir</strong><p>Qué resultado importa y qué no hace falta construir.</p></li>
+                <li><span>03</span><strong>Resolver</strong><p>Diseñar, desarrollar y probar con la operación real.</p></li>
+                <li><span>04</span><strong>Acompañar</strong><p>Entregar con claridad para que el equipo pueda sostenerlo.</p></li>
+            </ol>
+        </section>
+
+        <section class="capabilities section-shell" id="capacidades" aria-labelledby="capabilities-title">
+            <div class="section-index">
+                <span>04</span>
+                <p>Capacidades</p>
+            </div>
+            <header class="capabilities-intro">
+                <p class="eyebrow">La herramienta viene después</p>
+                <h2 id="capabilities-title">Puedo construir distintas cosas.<br>El criterio es elegir la correcta.</h2>
+            </header>
+            <div class="capability-list">
+                <div class="capability-row"><span>01</span><h3>Sistemas de gestión</h3><p>Stock, clientes, pedidos, equipos y reportes diseñados alrededor de tu forma de trabajar.</p></div>
+                <div class="capability-row"><span>02</span><h3>Automatización</h3><p>Procesos repetitivos conectados para recuperar tiempo y reducir errores.</p></div>
+                <div class="capability-row"><span>03</span><h3>Web y e-commerce</h3><p>Experiencias rápidas, claras y preparadas para convertir visitas en oportunidades.</p></div>
+                <div class="capability-row"><span>04</span><h3>Arquitectura cloud</h3><p>Infraestructura y decisiones técnicas que puedan crecer sin agregar complejidad innecesaria.</p></div>
+            </div>
+        </section>
+
+        <section class="founder section-shell" id="equipo" aria-labelledby="founder-title">
+            <div class="founder-image">
+                <span class="image-coordinate">24.1858° S / 65.2995° W</span>
+                <img src="img/gabriel.webp" alt="Retrato de Gabriel Calisaya" width="640" height="640" loading="lazy">
+            </div>
+            <div class="founder-copy">
+                <p class="eyebrow">Gabriel Calisaya · Fundador</p>
+                <h2 id="founder-title">Código, sí.<br>Pero con criterio de negocio.</h2>
+                <p class="founder-lead">Trabajé dentro de empresas, con stock, gestión, equipos y sistemas. Sé que una herramienta puede ser técnicamente correcta y aun así no servir en el día a día.</p>
+                <p>Por eso lidero personalmente el diagnóstico y las decisiones de cada proyecto. Cuando el alcance lo requiere, trabajo junto a un equipo técnico que acompaña diseño, desarrollo e implementación.</p>
+                <div class="founder-meta">
+                    <span>Base / San Salvador de Jujuy</span>
+                    <span>Alcance / Argentina + remoto</span>
+                    <span>Documentación técnica / ES + EN</span>
+                </div>
+                <div class="founder-links">
+                    <a class="profile-link" href="https://www.linkedin.com/in/gabriel-calisaya/" target="_blank" rel="noopener noreferrer">Ver perfil en LinkedIn ↗</a>
+                    <details class="technical-profile">
+                        <summary>Ver perfil técnico <span aria-hidden="true">+</span></summary>
+                        <div class="technical-grid">
+                            <section>
+                                <span>01 / Web</span>
+                                <h3>Interfaces y productos</h3>
+                                <p>Angular · React · Next.js · TypeScript · JavaScript · HTML5/CSS3 · Tailwind CSS · Bootstrap</p>
+                            </section>
+                            <section>
+                                <span>02 / Backend + datos</span>
+                                <h3>Lógica e integraciones</h3>
+                                <p>.NET 8 · C# · Node.js · PHP · APIs REST · arquitectura y modelado de datos</p>
+                            </section>
+                            <section>
+                                <span>03 / Automatización + inmersión</span>
+                                <h3>Procesos y experiencias</h3>
+                                <p>Google Apps Script · automatización de correos · chatbots · Unity · A-Frame · MindAR</p>
+                            </section>
+                            <section>
+                                <span>04 / Infraestructura + entrega</span>
+                                <h3>Publicación y crecimiento</h3>
+                                <p>Cloudflare · Git · GitHub · SEO técnico · Tienda Nube con código a medida</p>
+                            </section>
                         </div>
-                    </div>
-                </div>
-                <div class="why-points fade-in-up">
-                    <div class="why-point">
-                        <i class="fa-solid fa-bullseye"></i>
-                        <div>
-                            <h4>Enfoque en resultados</h4>
-                            <p>Medimos el éxito por lo que tu negocio gana: más consultas, ventas u operación más simple.</p>
-                        </div>
-                    </div>
-                    <div class="why-point">
-                        <i class="fa-solid fa-code"></i>
-                        <div>
-                            <h4>Código a medida</h4>
-                            <p>Sin plantillas genéricas cuando el proyecto lo requiere. Soluciones pensadas para vos.</p>
-                        </div>
-                    </div>
-                    <div class="why-point">
-                        <i class="fa-solid fa-cloud"></i>
-                        <div>
-                            <h4>Web y cloud</h4>
-                            <p>Sitios, tiendas, sistemas y automatización, con consultoría cloud cuando hace falta escalar.</p>
-                        </div>
-                    </div>
-                    <div class="why-point">
-                        <i class="fa-solid fa-handshake"></i>
-                        <div>
-                            <h4>Acompañamiento real</h4>
-                            <p>Capacitación, documentación y soporte opcional después de la entrega.</p>
-                        </div>
-                    </div>
+                        <p class="technical-foundations">Bases académicas: C++, Java y Python.</p>
+                    </details>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="process" id="proceso">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <span class="section-badge">Cómo trabajamos</span>
-                <h2>Un proceso claro, de punta a punta</h2>
-                <p>Sabés en qué etapa está tu proyecto en todo momento.</p>
-            </div>
-            <div class="process-steps">
-                <div class="process-step glass-card fade-in-up">
-                    <span class="process-num">01</span>
-                    <h3>Consulta</h3>
-                    <p>Contanos qué necesitás por formulario o WhatsApp. Te respondemos en menos de 24 h hábiles.</p>
-                </div>
-                <div class="process-step glass-card fade-in-up">
-                    <span class="process-num">02</span>
-                    <h3>Propuesta</h3>
-                    <p>Definimos alcance, plazos según tu prioridad y una cotización sin compromiso.</p>
-                </div>
-                <div class="process-step glass-card fade-in-up">
-                    <span class="process-num">03</span>
-                    <h3>Desarrollo</h3>
-                    <p>Construimos por etapas con avances que podés revisar y feedback continuo.</p>
-                </div>
-                <div class="process-step glass-card fade-in-up">
-                    <span class="process-num">04</span>
-                    <h3>Entrega</h3>
-                    <p>Lanzamiento, capacitación y soporte opcional para que operes con confianza.</p>
+        <section class="contact section-shell" id="contacto" aria-labelledby="contact-title">
+            <div class="contact-heading">
+                <p class="eyebrow">Tu problema puede ser el punto de partida</p>
+                <h2 id="contact-title">Contame qué hoy te quita tiempo, control o ventas.</h2>
+                <p>No necesitás llegar con una solución definida. La primera conversación es para entender el contexto y decidir si tiene sentido trabajar juntos.</p>
+                <div class="contact-direct">
+                    <a href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a>
+                    <a href="https://wa.me/5493885187080?text=Hola%20Gabriel%2C%20quiero%20conversar%20sobre%20un%20problema%20de%20mi%20negocio." target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="services" id="servicios">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <span class="section-badge">Servicios</span>
-                <h2>Desarrollo web y herramientas digitales</h2>
-                <p>Todo lo que necesitás para vender y operar mejor online, en un solo equipo.</p>
-            </div>
-            <div class="services-grid">
-                <article class="service-card glass-card fade-in-up" data-service="Desarrollo Web">
-                    <div class="service-icon"><i class="fa-solid fa-globe"></i></div>
-                    <h3>Desarrollo web</h3>
-                    <p>Sitios institucionales, landings y presencia profesional optimizada para <span class="highlight">Google y conversiones</span>.</p>
-                    <span class="service-price">Desde <strong>$200.000</strong></span>
-                    <a href="#contacto" class="service-cta">Cotizar desarrollo web <i class="fa-solid fa-arrow-right"></i></a>
-                </article>
-                <article class="service-card glass-card fade-in-up" data-service="Tienda Online">
-                    <div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div>
-                    <h3>Tiendas online</h3>
-                    <p>E-commerce a medida para <span class="highlight">vender 24/7</span> con panel autoadministrable y sin comisiones por venta.</p>
-                    <span class="service-price">Desde <strong>$500.000</strong></span>
-                    <a href="#contacto" class="service-cta">Cotizar tienda online <i class="fa-solid fa-arrow-right"></i></a>
-                </article>
-                <article class="service-card glass-card fade-in-up" data-service="Bot de WhatsApp">
-                    <div class="service-icon"><i class="fa-solid fa-robot"></i></div>
-                    <h3>Automatización</h3>
-                    <p>Bots de WhatsApp y flujos que <span class="highlight">responden al instante</span> y liberan tiempo de tu equipo.</p>
-                    <span class="service-price">Desde <strong>$500.000</strong></span>
-                    <a href="#contacto" class="service-cta">Cotizar automatización <i class="fa-solid fa-arrow-right"></i></a>
-                </article>
-                <article class="service-card glass-card fade-in-up" data-service="Sistema de Gestión">
-                    <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
-                    <h3>Sistemas a medida</h3>
-                    <p>Herramientas de gestión: stock, clientes, pedidos y reportes <span class="highlight">adaptados a tu operación</span>.</p>
-                    <span class="service-price">Desde <strong>$1.500.000</strong></span>
-                    <a href="#contacto" class="service-cta">Cotizar sistema <i class="fa-solid fa-arrow-right"></i></a>
-                </article>
-                <article class="service-card glass-card fade-in-up" data-service="Consultoría Cloud">
-                    <div class="service-icon"><i class="fa-solid fa-cloud"></i></div>
-                    <h3>Consultoría cloud</h3>
-                    <p>Asesoramiento para migrar, optimizar costos y elegir la <span class="highlight">infraestructura correcta</span> en la nube.</p>
-                    <span class="service-price"><strong>Por hora o por proyecto</strong></span>
-                    <a href="#contacto" class="service-cta">Cotizar consultoría <i class="fa-solid fa-arrow-right"></i></a>
-                </article>
-            </div>
-        </div>
-    </section>
-
-
-    <section class="calc" id="calculadora">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <span class="section-badge">Presupuesto</span>
-                <h2>Calculá una estimación</h2>
-                <p>Tres preguntas y te damos un rango orientativo, sin dejar tus datos.</p>
-            </div>
-
-            <div class="calc-card glass-card fade-in-up">
-                <form class="calc-form" id="calc-form">
-                    <fieldset class="calc-group">
-                        <legend>¿Qué necesitás?</legend>
-                        <div class="calc-options" id="calc-tipo"></div>
-                    </fieldset>
-
-                    <!-- Las preguntas siguientes cambian según el servicio elegido -->
-                    <div id="calc-preguntas"></div>
-                </form>
-
-                <div class="calc-result" id="calc-result" role="status" aria-live="polite">
-                    <span class="calc-result-label">Estimación orientativa</span>
-                    <p class="calc-result-range" id="calc-range">Elegí un servicio para empezar</p>
-                    <p class="calc-result-time" id="calc-time"></p>
-                    <ul class="calc-resumen" id="calc-resumen"></ul>
-                    <p class="calc-disclaimer">
-                        Es una referencia, no un presupuesto. El precio final depende del alcance real,
-                        y lo cerramos después de una charla. No incluye dominio, hosting ni licencias de terceros.
-                    </p>
-                    <a href="#contacto" class="btn btn-primary calc-cta" id="calc-cta">Pedir presupuesto exacto</a>
+            <form class="contact-form" id="contact-form" action="https://formspree.io/f/mvzydwvv" method="POST" data-success="Recibí tu consulta. Te voy a responder dentro de las próximas 24 horas hábiles." data-error="No pude enviar el mensaje. Probá nuevamente o escribime por WhatsApp.">
+                <input type="hidden" name="subject" value="Nueva consulta desde New Tech / ES">
+                <input type="hidden" name="language" value="es">
+                <input class="form-trap" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+                <div class="field-pair">
+                    <label>Nombre<input type="text" name="name" autocomplete="name" required></label>
+                    <label>Correo<input type="email" name="email" autocomplete="email" required></label>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="section-header fade-in-up">
-                <span class="section-badge">Dudas comunes</span>
-                <h2>Preguntas frecuentes</h2>
-                <p>Todo lo importante antes de arrancar tu proyecto con nosotros.</p>
-            </div>
-            <div class="faq-grid">
-                <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
-                        <span>¿Cuánto cuesta un proyecto?</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-a1" role="region" aria-labelledby="faq-q1">
-                        <p>Para que puedas ubicarte antes de escribirnos, estos son los pisos: un sitio o landing arranca en <strong>$200.000</strong>, una tienda online en <strong>$500.000</strong>, un bot de WhatsApp en <strong>$500.000</strong> y un sistema de gestión a medida en <strong>$1.500.000</strong>. La consultoría cloud se cotiza por hora o por proyecto según el relevamiento.</p><p>De ahí para arriba depende del tamaño, las integraciones y los plazos. Si querés una referencia más ajustada a tu caso, usá la <a href="#calculadora" class="faq-link">calculadora de presupuesto</a>: tres preguntas y te da un rango, sin dejar tus datos.</p><p>Los valores no incluyen dominio, hosting ni licencias de terceros, que se pagan aparte y quedan a tu nombre.</p>
-                    </div>
+                <label>Empresa o proyecto <span>(opcional)</span><input type="text" name="company" autocomplete="organization"></label>
+                <label>¿Qué está pasando?<textarea name="message" rows="5" required placeholder="Ej.: perdemos consultas, el stock no coincide, repetimos tareas manuales..."></textarea></label>
+                <div class="consent-check">
+                    <input id="privacy-consent-form" type="checkbox" name="privacy-consent" value="accepted" required>
+                    <label for="privacy-consent-form">Acepto el tratamiento de mis datos para responder esta consulta y las transferencias necesarias descriptas en la <a href="privacidad.html">Política de privacidad</a>.</label>
                 </div>
-                <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
-                        <span>¿Cuánto tiempo demora un sitio o tienda online?</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-a2" role="region" aria-labelledby="faq-q2">
-                        <p>Los plazos dependen de la complejidad y de la prioridad que le des al proyecto. Una landing puede avanzar en pocos días; un e-commerce o sistema de gestión suele llevar varias semanas. En la propuesta te damos fechas realistas según tu caso.</p>
-                    </div>
+                <div class="form-end">
+                    <p>No usamos tu consulta para publicidad.</p>
+                    <button class="submit-button" type="submit">Enviar consulta <span aria-hidden="true">↗</span></button>
                 </div>
-                <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
-                        <span>¿Qué formas de pago aceptan?</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-a3" role="region" aria-labelledby="faq-q3">
-                        <p>Trabajamos con seña al iniciar y saldo por etapas o al finalizar, según el proyecto. Los detalles los acordamos en la propuesta para que tengas claridad desde el primer día.</p><p>Facturamos como monotributista, con <strong>factura C</strong>. Aceptamos transferencia bancaria.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
-                        <span>¿Incluyen dominio y hosting?</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-a4" role="region" aria-labelledby="faq-q4">
-                        <p>Podemos orientarte en la compra del dominio y configurar el hosting que mejor se adapte a tu presupuesto y tráfico. Si ya tenés dominio, lo integramos sin problema.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a5" id="faq-q5">
-                        <span>¿Qué necesito tener listo para empezar?</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-a5" role="region" aria-labelledby="faq-q5">
-                        <p>En general: una idea clara del objetivo, textos o borradores, imágenes o logo si los tenés, y acceso a dominio si ya existe. No hace falta tener todo perfecto: te guiamos en lo que falte.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a6" id="faq-q6">
-                        <span>¿Tengo que pagar mantenimiento mensual?</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-a6" role="region" aria-labelledby="faq-q6">
-                        <p>No es obligatorio. Te entregamos el proyecto optimizado y configurado. Ofrecemos planes opcionales de mantenimiento y soporte si querés despreocuparte de actualizaciones, seguridad y cambios.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a7" id="faq-q7">
-                        <span>¿Puedo administrar mi tienda yo mismo?</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-a7" role="region" aria-labelledby="faq-q7">
-                        <p>Sí. Las tiendas incluyen panel autoadministrable y capacitación para que gestiones productos y pedidos sin depender de nosotros para el día a día.</p>
-                    </div>
-                </div>
-                <div class="faq-item glass-card fade-in-up">
-                    <button class="faq-question" aria-expanded="false" aria-controls="faq-a8" id="faq-q8">
-                        <span>¿Los bots de WhatsApp sirven para mi negocio?</span>
-                        <i class="fa-solid fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer" id="faq-a8" role="region" aria-labelledby="faq-q8">
-                        <p>Si recibís consultas repetitivas (precios, horarios, catálogo), un bot responde al instante y te ahorra horas, mejorando la experiencia del cliente y las oportunidades de venta.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact" id="contacto">
-        <div class="container">
-            <div class="contact-card glass-card fade-in-up">
-                <div class="contact-content">
-                    <h2>¿Listo para arrancar tu proyecto?</h2>
-                    <p>Completá el formulario y te respondemos en menos de 24 h hábiles. También podés escribirnos por WhatsApp.</p>
-                    <div class="contact-channels">
-                        <a href="https://wa.me/5493885187080?text=Hola%20New%20Tech%2C%20quiero%20pedir%20un%20presupuesto." class="btn btn-secondary btn-wa" target="_blank" rel="noopener" data-wa="Hola New Tech, quiero pedir un presupuesto.">
-                            <i class="fa-brands fa-whatsapp wa-icon" aria-hidden="true"></i>
-                            <span>Escribinos por WhatsApp</span>
-                        </a>
-                        <div class="contact-phone">
-                            <i class="fa-solid fa-phone"></i>
-                            <span>Llamadas: 388 518-7080</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-form-container">
-                    <form id="contact-form" class="contact-form" novalidate>
-                        <div class="service-chip" id="service-chip">
-                            <span>Consultando por: <strong id="service-chip-name"></strong></span>
-                            <button type="button" id="service-chip-clear" aria-label="Quitar el servicio seleccionado">&times;</button>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-name">Nombre</label>
-                            <input type="text" id="form-name" name="name" placeholder="Tu nombre completo" required autocomplete="name" aria-describedby="err-name">
-                            <span class="field-error" id="err-name">Escribí tu nombre para que sepamos cómo dirigirnos a vos.</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-email">Correo electrónico</label>
-                            <input type="email" id="form-email" name="email" placeholder="nombre@correo.com" required autocomplete="email" aria-describedby="err-email">
-                            <span class="field-error" id="err-email">Revisá el correo: parece que falta algo.</span>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-phone">WhatsApp / Teléfono <span class="label-optional">(opcional)</span></label>
-                            <input type="tel" id="form-phone" name="phone" placeholder="Ej: 388 123-4567" autocomplete="tel">
-                        </div>
-                        <div class="form-group">
-                            <label for="form-service">Servicio requerido</label>
-                            <select id="form-service" name="service">
-                                <option value="Desarrollo Web">Desarrollo web</option>
-                                <option value="Tienda Online">Tienda online</option>
-                                <option value="Bot de WhatsApp">Automatización / Bot WhatsApp</option>
-                                <option value="Sistema de Gestión">Sistema a medida</option>
-                                <option value="Consultoría Cloud">Consultoría cloud</option>
-                                <option value="Otro">Otro proyecto</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="form-message">Mensaje / detalles del proyecto</label>
-                            <textarea id="form-message" name="message" rows="4" placeholder="Contanos brevemente qué necesitás..." required aria-describedby="err-message"></textarea>
-                            <span class="field-error" id="err-message">Contanos aunque sea en una línea qué necesitás.</span>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-submit">
-                            <span class="btn-text">Enviar mensaje</span>
-                            <span class="btn-spinner" style="display: none;"><i class="fa-solid fa-spinner fa-spin"></i></span>
-                        </button>
-                        <p class="form-privacy">Al enviar aceptás que usemos tus datos solo para responder tu consulta. <a href="privacidad.html">Cómo tratamos tus datos</a>.</p>
-                        <p class="form-note"><i class="fa-solid fa-clock"></i> Respuesta en menos de 24 h hábiles</p>
-                        <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
+                <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <a href="#inicio" class="logo footer-logo">
-                        <div class="logo-icon"><i class="fa-solid fa-code"></i></div>
-                        <span class="logo-text-new">New</span><span class="logo-text-tech">Tech</span>
-                    </a>
-                    <p>Desarrollo web, herramientas a medida y consultoría cloud para escalar tu negocio.</p>
-                    <div class="social-links">
-                        <a href="https://www.linkedin.com/in/gabriel-calisaya/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="https://wa.me/5493885187080?text=Hola%20New%20Tech" class="btn-wa" data-wa="Hola New Tech" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Navegación</h4>
-                    <a href="#inicio">Inicio</a>
-                    <a href="#proyectos">Proyectos</a>
-                    <a href="#servicios">Servicios</a>
-                    <a href="#nosotros">Nosotros</a>
-                    <a href="#faq">Preguntas</a>
-                </div>
-                <div class="footer-links">
-                    <h4>Contacto</h4>
-                    <a href="https://wa.me/5493885187080?text=Hola%20New%20Tech" class="btn-wa" target="_blank" rel="noopener" data-wa="Hola New Tech">WhatsApp</a>
-                    <a href="tel:+5493885187080">Llamar</a>
-                    <a class="footer-contact-link" href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> New Tech. Todos los derechos reservados.</p>
-                <p class="footer-legal">San Salvador de Jujuy, Argentina &middot; Monotributista, emitimos factura C &middot; <a href="privacidad.html">Política de privacidad</a></p>
-            </div>
+    <footer class="site-footer">
+        <div class="footer-brand">
+            <a href="#inicio" aria-label="New Tech, volver al inicio">
+                <img class="footer-logo" src="img/newtech-logo.png" alt="New Tech" width="506" height="250">
+            </a>
+            <p>Negocios entendidos.<br>Sistemas bien construidos.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Navegación del pie">
+            <span>Explorar</span>
+            <a href="#casos">Casos</a>
+            <a href="#metodo">Método</a>
+            <a href="#capacidades">Capacidades</a>
+            <a href="#equipo">Quién soy</a>
+        </nav>
+        <div class="footer-contact">
+            <span>Conversar</span>
+            <a href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a>
+            <a href="https://wa.me/5493885187080?text=Hola%20Gabriel%2C%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener noreferrer">WhatsApp ↗</a>
+            <a href="https://www.linkedin.com/in/gabriel-calisaya/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+        </div>
+        <div class="footer-bottom">
+            <span>© <span id="year">2026</span> Gabriel Calisaya</span>
+            <span>San Salvador de Jujuy · Argentina</span>
+            <a href="privacidad.html">Política de privacidad</a>
+            <button class="footer-privacy-button" type="button" data-open-privacy>Preferencias de analítica</button>
+            <a href="en/" lang="en">English version</a>
         </div>
     </footer>
 
-    <div class="mobile-cta-bar" aria-label="Acciones rápidas">
-        <a href="#contacto" class="btn btn-secondary mobile-cta-presupuesto">Presupuesto</a>
-        <a href="https://wa.me/5493885187080?text=Hola%20New%20Tech%2C%20quiero%20consultar%20por%20un%20proyecto." class="btn btn-primary btn-wa mobile-cta-wa" target="_blank" rel="noopener" data-wa="Hola New Tech, quiero consultar por un proyecto.">
-            <i class="fa-brands fa-whatsapp"></i> WhatsApp
-        </a>
-    </div>
-
-    <a href="https://wa.me/5493885187080?text=Hola%20New%20Tech%2C%20quiero%20consultar%20por%20un%20proyecto." class="whatsapp-fab btn-wa" data-wa="Hola New Tech, quiero consultar por un proyecto." target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
-        <i class="fa-brands fa-whatsapp"></i>
-    </a>
-
-  <!-- Portfolio case modal -->
-    <div class="modal-overlay" id="case-modal" role="dialog" aria-modal="true" aria-labelledby="case-modal-label" hidden>
-        <div class="modal-box glass-card case-modal-box">
-            <button type="button" class="case-modal-close" id="case-modal-close" aria-label="Cerrar"><i class="fa-solid fa-xmark"></i></button>
-            <div class="case-modal-brand">
-                <img id="case-modal-logo" src="" alt="">
-            </div>
-            <h3 id="case-modal-label" class="case-modal-title"></h3>
-            <p class="case-modal-work" id="case-modal-work"></p>
-            <p class="case-modal-result" id="case-modal-result"></p>
-            <div class="case-modal-actions">
-                <a href="#" id="case-modal-link" class="btn btn-primary" target="_blank" rel="noopener" style="display: none;">Ver proyecto</a>
-                <a href="#contacto" class="btn btn-secondary" id="case-modal-cta">Quiero algo similar</a>
-            </div>
+    <aside class="privacy-panel" id="privacy-panel" role="dialog" aria-modal="false" aria-labelledby="privacy-title" hidden>
+        <p class="privacy-index">Privacidad / 001</p>
+        <div class="privacy-copy">
+            <h2 id="privacy-title">Medición,<br><em>bajo tu control.</em></h2>
+            <p>Vercel mide visitas de forma agregada y sin cookies. Google Analytics solo se activa si lo aceptás; rechazarlo no cambia ninguna función del sitio.</p>
+            <a href="privacidad.html#cookies">Leer detalles de privacidad ↗</a>
         </div>
-    </div>
-
-    <div class="modal-overlay" id="success-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title-text">
-        <div class="modal-box glass-card">
-            <div class="modal-icon">
-                <svg viewBox="0 0 52 52" class="checkmark">
-                    <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
-                    <path class="checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
-                </svg>
-            </div>
-            <h3 class="modal-title" id="modal-title-text">¡Mensaje enviado!</h3>
-            <p class="modal-text">Gracias por contactarnos. Revisaremos tu consulta y te responderemos en menos de 24 h hábiles.</p>
-            <button class="btn btn-primary modal-close-btn" id="modal-close-btn">Perfecto, ¡gracias!</button>
+        <div class="privacy-actions">
+            <button type="button" data-consent="reject">Solo lo necesario</button>
+            <button class="privacy-accept" type="button" data-consent="accept">Aceptar analítica</button>
         </div>
-    </div>
+    </aside>
+    <p class="visually-hidden" id="privacy-status" role="status" aria-live="polite"></p>
 
-    <script src="js/main.js?v=12"></script>
+    <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+    <script src="js/site-v2.js?v=3"></script>
 </body>
-
 </html>

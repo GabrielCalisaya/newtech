@@ -1,155 +1,177 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0d1117">
-    <link rel="canonical" href="https://www.newtech.net.ar/privacidad.html">
-    <meta name="robots" content="index, follow">
-    <script>
-        (function () {
-            try {
-                var saved = localStorage.getItem('theme');
-                var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
-                document.documentElement.setAttribute('data-theme', theme);
-            } catch (e) {}
-        })();
-    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f2efe6">
     <title>Política de privacidad | New Tech</title>
-    <meta name="description" content="Cómo New Tech trata los datos personales que recibe a través de su sitio web, conforme a la Ley 25.326 de Protección de Datos Personales.">
-
+    <meta name="description" content="Cómo New Tech recopila, utiliza, conserva y protege los datos personales de quienes visitan el sitio o envían una consulta.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.newtech.net.ar/privacidad.html">
+    <link rel="alternate" hreflang="es" href="https://www.newtech.net.ar/privacidad.html">
+    <link rel="alternate" hreflang="en" href="https://www.newtech.net.ar/en/privacy.html">
+    <link rel="alternate" hreflang="x-default" href="https://www.newtech.net.ar/privacidad.html">
     <link rel="icon" type="image/png" href="img/logo.png">
-
+    <link rel="preload" href="fonts/sora-800.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="fonts/outfit-400.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="fonts/sora-700.woff2" as="font" type="font/woff2" crossorigin>
-
     <link rel="stylesheet" href="css/fonts.css?v=5">
-    <link rel="stylesheet" href="css/styles.css?v=9">
+    <link rel="stylesheet" href="css/site-v2.css?v=3">
 </head>
+<body class="legal-page">
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<body>
-    <div class="aurora" aria-hidden="true">
-        <span class="aurora-blob blob-1"></span>
-        <span class="aurora-blob blob-2"></span>
-    </div>
-
-    <a href="#main" class="skip-link">Saltar al contenido</a>
-
-    <header class="navbar navbar-static">
-        <div class="container nav-container">
-            <a href="index.html" class="logo">
-                <div class="logo-icon"><i class="fa-solid fa-code"></i></div>
-                <span class="logo-text-new">New</span><span class="logo-text-tech">Tech</span>
-            </a>
-            <a href="index.html" class="btn btn-secondary btn-nav">Volver al inicio</a>
-        </div>
+    <header class="site-header" id="site-header">
+        <a class="wordmark" href="index.html" aria-label="New Tech, inicio"><img src="img/newtech-logo.png" alt="New Tech" width="506" height="250"></a>
+        <nav class="desktop-nav" aria-label="Navegación principal">
+            <a href="index.html#casos">Casos</a><a href="index.html#metodo">Método</a><a href="index.html#contacto">Contacto</a>
+        </nav>
+        <div class="header-tools"><a class="language-link" href="en/privacy.html" lang="en" aria-label="Read this policy in English">EN</a></div>
     </header>
 
-    <main id="main" class="legal">
-        <div class="container legal-container">
-            <h1>Política de privacidad</h1>
-            <p class="legal-updated">Última actualización: 10 de agosto de 2026</p>
-
-            <h2>Quién es responsable de tus datos</h2>
-            <p>
-                Los datos que enviás a través de este sitio los trata <strong>Gabriel Calisaya</strong>, que opera
-                comercialmente como <strong>New Tech</strong>, con domicilio en San Salvador de Jujuy, provincia de
-                Jujuy, Argentina. Podés contactarnos en
-                <a href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a>.
-            </p>
-
-            <h2>Qué datos recolectamos</h2>
-            <p>A través del formulario de contacto pedimos:</p>
-            <ul class="legal-list">
-                <li><strong>Nombre</strong> — obligatorio, para saber cómo dirigirnos a vos.</li>
-                <li><strong>Correo electrónico</strong> — obligatorio, para responderte.</li>
-                <li><strong>Teléfono o WhatsApp</strong> — opcional, solo si preferís que te contactemos por ahí.</li>
-                <li><strong>Servicio de interés y mensaje</strong> — para entender qué necesitás.</li>
-            </ul>
-            <p>
-                No pedimos ni almacenamos datos sensibles, datos financieros ni información de tarjetas.
-            </p>
-
-            <h2>Para qué los usamos</h2>
-            <p>
-                Únicamente para responder tu consulta y, si avanzamos, para gestionar el proyecto que nos encargues.
-                <strong>No vendemos, alquilamos ni cedemos tus datos a terceros con fines comerciales</strong>, y no te
-                enviamos publicidad ni newsletters salvo que nos lo pidas expresamente.
-            </p>
-
-            <h2>Con quién los compartimos</h2>
-            <p>
-                Para que el sitio funcione usamos servicios de terceros que pueden procesar datos por nuestra cuenta:
-            </p>
-            <ul class="legal-list">
-                <li><strong>Formspree</strong> — procesa el envío del formulario y nos lo hace llegar por correo.</li>
-                <li><strong>Vercel</strong> — aloja el sitio y registra datos técnicos de acceso.</li>
-                <li><strong>Google Analytics / Tag Manager</strong> — métricas de uso agregadas y anónimas.</li>
-            </ul>
-            <p>
-                Estos servicios pueden almacenar información en servidores fuera de la Argentina. Al usar el
-                formulario, prestás conformidad con esa transferencia.
-            </p>
-
-            <h2>Cuánto tiempo los conservamos</h2>
-            <p>
-                Las consultas que no derivan en un proyecto se conservan hasta dos años, por si retomás el contacto.
-                Si trabajamos juntos, conservamos los datos mientras dure la relación comercial y el plazo legal de
-                respaldo posterior. Podés pedir que los borremos antes.
-            </p>
-
-            <h2>Tus derechos</h2>
-            <p>
-                Conforme a la <strong>Ley 25.326 de Protección de Datos Personales</strong>, tenés derecho a acceder,
-                rectificar, actualizar y suprimir tus datos personales. Para ejercerlos, escribinos a
-                <a href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a> y te respondemos dentro de los
-                plazos que fija la ley.
-            </p>
-            <p class="legal-note">
-                El titular de los datos personales tiene la facultad de ejercer el derecho de acceso a los mismos en
-                forma gratuita a intervalos no inferiores a seis meses, salvo que se acredite un interés legítimo al
-                efecto, conforme lo establecido en el artículo 14, inciso 3 de la Ley 25.326.
-            </p>
-            <p class="legal-note">
-                La <strong>Agencia de Acceso a la Información Pública</strong>, en su carácter de órgano de control de
-                la Ley 25.326, tiene la atribución de atender las denuncias y reclamos que interpongan quienes resulten
-                afectados en sus derechos por incumplimiento de las normas vigentes en materia de protección de datos
-                personales.
-            </p>
-
-            <h2>Cookies</h2>
-            <p>
-                Este sitio usa almacenamiento local del navegador para recordar si elegiste el tema claro u oscuro. Esa
-                información queda en tu dispositivo y no se envía a ningún servidor. Las herramientas de analítica
-                pueden instalar cookies propias; podés bloquearlas desde la configuración de tu navegador sin que el
-                sitio deje de funcionar.
-            </p>
-
-            <h2>Cambios en esta política</h2>
-            <p>
-                Si actualizamos esta política, cambiamos la fecha del encabezado. Los cambios rigen desde su
-                publicación en esta página.
-            </p>
-
-            <div class="legal-back">
-                <a href="index.html" class="btn btn-primary">Volver al inicio</a>
+    <main id="contenido" class="legal-main">
+        <header class="legal-hero">
+            <p class="overline">Información clara / control real</p>
+            <h1>Política de<br><em>privacidad.</em></h1>
+            <div class="legal-intro">
+                <p>Esta política explica qué datos trata New Tech cuando visitás el sitio o enviás una consulta, para qué se usan y cómo podés ejercer tus derechos.</p>
+                <p class="legal-updated">Vigente desde el 10 de septiembre de 2026</p>
             </div>
+        </header>
+
+        <div class="legal-layout">
+            <aside class="legal-index" aria-label="Contenido de la política">
+                <span>Índice / 011</span>
+                <nav aria-label="Secciones de la política">
+                    <a href="#responsable">01 Responsable</a><a href="#datos">02 Datos tratados</a><a href="#finalidades">03 Finalidades</a>
+                    <a href="#proveedores">04 Proveedores</a><a href="#transferencias">05 Transferencias</a><a href="#conservacion">06 Conservación</a>
+                    <a href="#derechos">07 Derechos</a><a href="#seguridad">08 Seguridad</a><a href="#cookies">09 Cookies</a>
+                    <a href="#menores">10 Menores</a><a href="#cambios">11 Cambios</a>
+                </nav>
+            </aside>
+
+            <article class="legal-content">
+                <section id="responsable">
+                    <p class="legal-number">01</p><h2>Responsable del tratamiento</h2>
+                    <p><strong>Gabriel Calisaya</strong>, que opera comercialmente como <strong>New Tech</strong>, es responsable de los datos tratados mediante este sitio. La actividad se desarrolla desde San Salvador de Jujuy, Jujuy, Argentina.</p>
+                    <p>Consultas sobre privacidad: <a href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a>.</p>
+                </section>
+
+                <section id="datos">
+                    <p class="legal-number">02</p><h2>Qué datos tratamos</h2>
+                    <h3>Cuando enviás el formulario</h3>
+                    <ul>
+                        <li>Nombre y correo electrónico, obligatorios para identificarte y responder.</li>
+                        <li>Empresa o proyecto, si decidís informarlo.</li>
+                        <li>El mensaje y cualquier información que incluyas voluntariamente.</li>
+                        <li>Constancia de aceptación del aviso de privacidad e idioma del formulario.</li>
+                    </ul>
+                    <p>No solicitamos datos sensibles, información financiera ni credenciales. Te pedimos que no los incluyas en el mensaje.</p>
+                    <h3>Datos técnicos</h3>
+                    <p>El alojamiento y los servicios de seguridad del formulario pueden procesar dirección IP, navegador, dispositivo, fecha, hora, página de origen y datos similares necesarios para entregar el sitio, prevenir abuso y diagnosticar fallas.</p>
+                    <h3>Analítica opcional</h3>
+                    <p>Solo si aceptás analítica, Google Analytics 4 puede registrar páginas visitadas, interacciones, procedencia aproximada, características del navegador o dispositivo e identificadores guardados en cookies.</p>
+                </section>
+
+                <section id="finalidades">
+                    <p class="legal-number">03</p><h2>Para qué y con qué fundamento</h2>
+                    <ul>
+                        <li><strong>Responder y evaluar tu consulta:</strong> para atender la solicitud que iniciás y analizar una posible relación profesional.</li>
+                        <li><strong>Gestionar un proyecto:</strong> si decidimos trabajar juntos, para coordinar, documentar y prestar el servicio acordado.</li>
+                        <li><strong>Seguridad y funcionamiento:</strong> para evitar spam, fraude, abuso y resolver errores técnicos.</li>
+                        <li><strong>Medición opcional:</strong> para entender el uso del sitio y mejorarlo, únicamente con tu consentimiento de analítica.</li>
+                    </ul>
+                    <p>No vendemos ni alquilamos datos personales. Tampoco usamos una consulta para newsletters o publicidad directa sin una autorización específica.</p>
+                </section>
+
+                <section id="proveedores">
+                    <p class="legal-number">04</p><h2>Proveedores que intervienen</h2>
+                    <div class="legal-services">
+                        <div><strong>Formspree</strong><span>Recepción, filtrado antispam, almacenamiento y notificación de consultas.</span><a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">Ver política ↗</a></div>
+                        <div><strong>Vercel</strong><span>Alojamiento, entrega del sitio y Web Analytics agregado sin cookies.</span><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Ver política ↗</a></div>
+                        <div><strong>Google</strong><span>Google Tag Manager y Analytics 4, únicamente cuando aceptás analítica.</span><a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Ver política ↗</a></div>
+                    </div>
+                    <p>Estos proveedores actúan bajo sus propias condiciones y medidas de seguridad. Solo reciben la información necesaria para prestar su función.</p>
+                </section>
+
+                <section id="transferencias">
+                    <p class="legal-number">05</p><h2>Transferencias internacionales</h2>
+                    <p>Formspree, Vercel y Google pueden procesar información en Estados Unidos u otros países donde operan. Esto puede implicar una transferencia internacional desde Argentina. Informamos esa circunstancia antes del envío y, cuando el tratamiento es opcional —como Google Analytics—, pedimos una elección separada.</p>
+                </section>
+
+                <section id="conservacion">
+                    <p class="legal-number">06</p><h2>Cuánto tiempo conservamos los datos</h2>
+                    <ul>
+                        <li>Las consultas que no generan una relación profesional se conservan como máximo durante <strong>12 meses</strong>, salvo que pidas su eliminación antes.</li>
+                        <li>Si existe un proyecto, los datos necesarios se conservan durante la relación y luego por los plazos legales, contables o de defensa de derechos que correspondan.</li>
+                        <li>Formspree mantiene un historial según el plan contratado y permite eliminar envíos desde su panel.</li>
+                        <li>La preferencia de analítica permanece en tu navegador hasta que la cambies o borres el almacenamiento del sitio.</li>
+                    </ul>
+                </section>
+
+                <section id="derechos">
+                    <p class="legal-number">07</p><h2>Tus derechos</h2>
+                    <p>Podés solicitar acceso, rectificación, actualización o supresión de tus datos, y retirar un consentimiento para tratamientos futuros. Escribí a <a href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a> indicando tu pedido y la información necesaria para verificar tu identidad.</p>
+                    <p>La normativa argentina prevé respuesta al acceso dentro de 10 días corridos y a la rectificación, actualización o supresión dentro de 5 días hábiles. El acceso es gratuito con la periodicidad establecida por la Ley 25.326, salvo interés legítimo.</p>
+                    <div class="legal-note"><strong>Autoridad de control.</strong> La Agencia de Acceso a la Información Pública recibe denuncias y reclamos relacionados con el incumplimiento de las normas de protección de datos. <a href="https://www.argentina.gob.ar/aaip/datospersonales/derechos" target="_blank" rel="noopener noreferrer">Conocer tus derechos ↗</a></div>
+                </section>
+
+                <section id="seguridad">
+                    <p class="legal-number">08</p><h2>Seguridad</h2>
+                    <p>Aplicamos medidas razonables de acceso, confidencialidad y transmisión segura acordes con el tipo de información. El sitio utiliza HTTPS y el acceso a las consultas se limita a las personas que necesitan gestionarlas. Ningún sistema conectado a Internet puede garantizar seguridad absoluta.</p>
+                </section>
+
+                <section id="cookies">
+                    <p class="legal-number">09</p><h2>Cookies y preferencias</h2>
+                    <div class="legal-table-wrap">
+                        <table class="legal-table">
+                            <caption class="visually-hidden">Tecnologías de almacenamiento utilizadas</caption>
+                            <thead><tr><th scope="col">Elemento</th><th scope="col">Uso</th><th scope="col">Duración</th></tr></thead>
+                            <tbody>
+                                <tr><th scope="row">newtech-analytics-consent</th><td>Guarda localmente si aceptaste o rechazaste la analítica.</td><td>Hasta cambiarla o borrar datos del sitio.</td></tr>
+                                <tr><th scope="row">_ga</th><td>Distingue visitantes para Google Analytics 4.</td><td>Hasta 2 años, solo con aceptación.</td></tr>
+                                <tr><th scope="row">_ga_*</th><td>Mantiene el estado de una sesión de Analytics.</td><td>Hasta 2 años, solo con aceptación.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>Vercel Web Analytics se utiliza en producción de forma agregada y sin cookies. Rechazar Google Analytics no limita ninguna función del sitio.</p>
+                    <button class="inline-control" type="button" data-open-privacy>Revisar preferencia de analítica</button>
+                </section>
+
+                <section id="menores">
+                    <p class="legal-number">10</p><h2>Datos de menores</h2>
+                    <p>Los servicios de New Tech están dirigidos a empresas, instituciones y personas que consultan por proyectos profesionales. No buscamos recopilar datos de menores. Si creés que recibimos información de un menor sin autorización adecuada, contactanos para revisarla y eliminarla.</p>
+                </section>
+
+                <section id="cambios">
+                    <p class="legal-number">11</p><h2>Cambios y contacto</h2>
+                    <p>Podemos actualizar esta política cuando cambien el sitio, los proveedores o la normativa. La versión vigente se identifica por la fecha del encabezado. Para cualquier pregunta escribí a <a href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a>.</p>
+                </section>
+            </article>
         </div>
     </main>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-bottom">
-                <p>&copy; <span id="year"></span> New Tech. Todos los derechos reservados.</p>
-                <p class="footer-legal">San Salvador de Jujuy, Argentina &middot; Monotributista, emitimos factura C</p>
-            </div>
+    <footer class="site-footer legal-footer">
+        <div class="footer-brand">
+            <a href="index.html" aria-label="New Tech, volver al inicio"><img class="footer-logo" src="img/newtech-logo.png" alt="New Tech" width="506" height="250"></a>
+            <p>Privacidad explicada.<br>Decisiones en tus manos.</p>
         </div>
+        <nav class="footer-nav" aria-label="Navegación del pie"><span>Continuar</span><a href="index.html">Inicio</a><a href="index.html#casos">Casos</a><a href="index.html#contacto">Contacto</a></nav>
+        <div class="footer-contact"><span>Privacidad</span><a href="mailto:contacto@newtech.net.ar">contacto@newtech.net.ar</a><button class="footer-privacy-button" type="button" data-open-privacy>Preferencias de analítica</button><a href="en/privacy.html" lang="en">Read in English</a></div>
+        <div class="footer-bottom"><span>© <span id="year">2026</span> Gabriel Calisaya</span><span>San Salvador de Jujuy · Argentina</span></div>
     </footer>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-</body>
+    <aside class="privacy-panel" id="privacy-panel" role="dialog" aria-modal="false" aria-labelledby="privacy-title" hidden>
+        <p class="privacy-index">Privacidad / 001</p>
+        <div class="privacy-copy">
+            <h2 id="privacy-title">Medición,<br><em>bajo tu control.</em></h2>
+            <p>Vercel mide visitas de forma agregada y sin cookies. Google Analytics solo se activa si lo aceptás; rechazarlo no cambia ninguna función del sitio.</p>
+            <a href="#cookies">Leer detalles de privacidad ↗</a>
+        </div>
+        <div class="privacy-actions"><button type="button" data-consent="reject">Solo lo necesario</button><button class="privacy-accept" type="button" data-consent="accept">Aceptar analítica</button></div>
+    </aside>
+    <p class="visually-hidden" id="privacy-status" role="status" aria-live="polite"></p>
 
+    <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments)};</script>
+    <script src="js/site-v2.js?v=3"></script>
+</body>
 </html>
