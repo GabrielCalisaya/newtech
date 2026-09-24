@@ -105,25 +105,21 @@ a {
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: clamp(8px, 2vw, 10px);
   color: #fff;
   flex-shrink: 0;
+  max-width: 100%;
 }
 .brand-symbol {
-  position: relative;
-  display: block;
-  width: 40px;
-  height: 40px;
-  overflow: hidden;
-  background: #fff;
+  display: inline-flex;
+  width: clamp(44px, 8vw, 54px);
+  flex-shrink: 0;
 }
 .brand-symbol img {
-  position: absolute;
-  max-width: none;
-  width: 106px;
-  height: 53px;
-  top: -6px;
-  left: 0;
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
 }
 .brand-name {
   display: flex;
@@ -153,6 +149,7 @@ a {
   align-items: center;
   gap: 12px;
   margin-left: auto;
+  flex-wrap: wrap;
 }
 .header-nav a {
   color: #b8bdc6;
@@ -175,6 +172,12 @@ a {
 }
 .back-site:hover {
   color: #ff6c35;
+}
+@media (max-width: 639px) {
+  .header-nav {
+    justify-content: space-between;
+    margin-left: 0;
+  }
 }
 .demo-footer {
   border-top: 1px solid #ffffff1c;
