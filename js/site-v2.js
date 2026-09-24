@@ -3,13 +3,6 @@
     const formEndpoint = 'https://formspree.io/f/mvzydwvv';
     const consentKey = 'newtech-analytics-consent';
 
-    if (location.hostname === 'newtech.net.ar' || location.hostname === 'www.newtech.net.ar') {
-        const analytics = document.createElement('script');
-        analytics.defer = true;
-        analytics.src = '/_vercel/insights/script.js';
-        document.head.appendChild(analytics);
-    }
-
     const privacyPanel = document.getElementById('privacy-panel');
     const privacyStatus = document.getElementById('privacy-status');
 

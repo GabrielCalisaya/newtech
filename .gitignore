@@ -5,3 +5,9 @@ COMMIT_MSG.txt
 
 # Local system files
 .DS_Store
+
+# Local graph and generated frontend files
+.codegraph/
+node_modules/
+dist/
+.playwright-cli/

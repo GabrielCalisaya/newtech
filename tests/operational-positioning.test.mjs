@@ -105,20 +105,23 @@ test('incluye los dos idiomas en el sitemap', async () => {
 
     assert.match(sitemap, /<loc>https:\/\/www\.newtech\.net\.ar\/<\/loc>/);
     assert.match(sitemap, /<loc>https:\/\/www\.newtech\.net\.ar\/en\/<\/loc>/);
-    assert.match(sitemap, /<lastmod>2026-09-10<\/lastmod>/);
+    assert.match(sitemap, /<lastmod>2026-09-24<\/lastmod>/);
 });
 
-test('carga Vercel Analytics solo en el dominio publicado', async () => {
-    const [es, en, script] = await Promise.all([
+test('la analítica opcional no incluye el proveedor anterior', async () => {
+    const [es, en, legalEs, legalEn, script] = await Promise.all([
         read('../index.html'),
         read('../en/index.html'),
+        read('../privacidad.html'),
+        read('../en/privacy.html'),
         read('../js/site-v2.js')
     ]);
 
-    assert.doesNotMatch(es, /<script defer src="\/_vercel\/insights\/script\.js"/);
-    assert.doesNotMatch(en, /<script defer src="\/_vercel\/insights\/script\.js"/);
-    assert.match(script, /location\.hostname/);
-    assert.match(script, /\/_vercel\/insights\/script\.js/);
+    for (const source of [es, en, legalEs, legalEn, script]) {
+        assert.doesNotMatch(source, /Vercel|\/_vercel\/insights\/script\.js|window\.va=/);
+    }
+    assert.match(legalEs, /<strong>Netlify<\/strong>/);
+    assert.match(legalEn, /<strong>Netlify<\/strong>/);
 });
 
 test('presenta un perfil técnico bilingüe sin desplazar el criterio de negocio', async () => {
@@ -222,7 +225,7 @@ test('el menú móvil se cierra al pasar a escritorio y bloquea el fondo cuando 
     assert.match(css, /@media\s*\(min-width:\s*761px\)\s*\{[^}]*\.mobile-nav:not\(\[hidden\]\)\s*\{[^}]*display:\s*none/s);
 });
 
-test('las cuatro páginas invalidan la versión anterior de CSS y JavaScript', async () => {
+test('las cuatro páginas usan la versión actual de CSS y JavaScript', async () => {
     const pages = await Promise.all([
         read('../index.html'),
         read('../en/index.html'),
@@ -232,6 +235,6 @@ test('las cuatro páginas invalidan la versión anterior de CSS y JavaScript', a
 
     for (const html of pages) {
         assert.match(html, /site-v2\.css\?v=3/);
-        assert.match(html, /site-v2\.js\?v=3/);
+        assert.match(html, /site-v2\.js\?v=4/);
     }
 });
