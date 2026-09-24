@@ -19,6 +19,19 @@ afterEach(() => {
 });
 
 describe("demo de experiencias", () => {
+  it("mantiene un enlace accesible de inicio con el logo de marca", () => {
+    const { container } = renderAt("/");
+    const homeLink = screen.getByRole("link", {
+      name: /New Tech Experiencias, inicio/i,
+    });
+    expect(homeLink).toHaveAttribute("href", "/");
+    const logo = container.querySelector(
+      '.brand-symbol img[src="/img/newtech-logo-c.png"]',
+    );
+    expect(logo).not.toBeNull();
+    expect(logo).toHaveAttribute("alt", "");
+  });
+
   it("permite abrir las tres muestras desde la portada", () => {
     renderAt("/");
     expect(

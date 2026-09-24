@@ -19,7 +19,7 @@ export default function App() {
     <div className="site-shell min-h-screen">
       <PageReset />
       <header className="demo-header">
-        <div className="demo-container flex items-center justify-between gap-4 py-4 md:py-5">
+        <div className="demo-container flex flex-wrap items-center justify-between gap-x-4 gap-y-3 py-4 sm:flex-nowrap md:py-5">
           <Link
             to="/"
             className="brand-link"
@@ -38,7 +38,7 @@ export default function App() {
               <small>EXPERIENCIAS</small>
             </span>
           </Link>
-          <nav className="header-nav" aria-label="Muestras">
+          <nav className="header-nav w-full sm:w-auto" aria-label="Muestras">
             <NavLink to="/ruleta">Ruleta</NavLink>
             <NavLink to="/trivia">Trivia</NavLink>
             <NavLink to="/3d">3D</NavLink>
