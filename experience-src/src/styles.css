@@ -113,17 +113,20 @@ a {
   position: relative;
   display: block;
   width: 40px;
-  height: 40px;
-  overflow: hidden;
-  background: #fff;
+  height: auto;
+  min-height: 28px;
+  overflow: visible;
+  background: transparent;
+  flex: 0 1 auto;
 }
 .brand-symbol img {
-  position: absolute;
+  position: static;
+  display: block;
+  width: 100%;
   max-width: none;
-  width: 106px;
-  height: 53px;
-  top: -6px;
-  left: 0;
+  height: auto;
+  left: auto;
+  top: auto;
 }
 .brand-name {
   display: flex;
@@ -998,182 +1001,4 @@ model-viewer {
   color: #576068;
   font-size: 14px;
   line-height: 1.5;
-  margin-bottom: 18px;
-}
-.demo-form {
-  display: grid;
-  gap: 13px;
-}
-.demo-form label {
-  display: grid;
-  gap: 6px;
-  color: #242b32;
-  font-size: 12px;
-  font-weight: 700;
-}
-.demo-form input {
-  width: 100%;
-  min-height: 46px;
-  border: 1px solid #aeb3b5;
-  background: #fffdf9;
-  padding: 11px 13px;
-  border-radius: 0;
-  color: #141922;
-  font-size: 15px;
-}
-.demo-form input:focus {
-  outline: 2px solid #f56630;
-  outline-offset: 1px;
-}
-.demo-form .privacy-note {
-  font-size: 11px;
-  color: #626b74;
-  line-height: 1.4;
-  margin: 1px 0 0;
-}
-.demo-form .button-primary {
-  margin-top: 3px;
-}
-.form-success {
-  background: #e0e9df;
-  border-left: 4px solid #3f945f;
-  padding: 24px;
-  color: #1d2c23;
-}
-.success-check {
-  display: grid;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  background: #358b56;
-  color: #fff;
-  border-radius: 50%;
-  font-weight: 700;
-}
-.form-success h3 {
-  font:
-    700 21px Sora,
-    sans-serif;
-  letter-spacing: -0.05em;
-  margin: 17px 0 8px;
-}
-.form-success p {
-  line-height: 1.5;
-  font-size: 14px;
-}
-.form-success .text-action {
-  margin-top: 14px;
-  color: #24663c;
-  border-color: #24663c;
-}
-
-@media (min-width: 640px) {
-  .demo-container {
-    width: min(100% - 60px, 1180px);
-  }
-  .header-nav {
-    gap: 23px;
-  }
-  .header-nav a {
-    font-size: 13px;
-  }
-  .sample-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .section-heading {
-    flex-direction: row;
-    align-items: end;
-    justify-content: space-between;
-  }
-  .dialog-panel {
-    padding: 31px;
-  }
-}
-@media (min-width: 900px) {
-  .home-hero {
-    padding-top: 70px;
-    padding-bottom: 60px;
-  }
-  .home-hero .display-title {
-    font-size: clamp(54px, 5.7vw, 72px);
-  }
-  .hero-signal {
-    display: block;
-    width: 360px;
-    height: 360px;
-    right: -10px;
-    top: 52px;
-    opacity: 0.85;
-  }
-  .signal-core {
-    inset: 95px;
-    font-size: 64px;
-  }
-  .signal-core span {
-    right: 35px;
-    top: 39px;
-  }
-  .sample-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-  .sample-card {
-    min-height: 455px;
-  }
-  .card-art {
-    height: 175px;
-  }
-  .cta-inner {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding-block: 70px;
-  }
-  .page-head {
-    padding-bottom: 63px;
-  }
-  .wheel-layout,
-  .model-layout {
-    grid-template-columns: minmax(0, 1.45fr) minmax(310px, 0.85fr);
-  }
-  .wheel-stage,
-  .model-stage {
-    min-height: 505px;
-  }
-  .wheel-outer {
-    width: 370px;
-  }
-  .experience-panel,
-  .model-info {
-    min-height: 505px;
-    padding: 30px;
-  }
-  .quiz-layout {
-    grid-template-columns: minmax(0, 1.55fr) minmax(270px, 0.75fr);
-  }
-  .quiz-main {
-    padding: 36px;
-  }
-  .quiz-side {
-    min-height: 540px;
-  }
-  .result-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-  .result-score,
-  .result-form {
-    min-height: 480px;
-    padding: 36px;
-  }
-  model-viewer {
-    height: 505px;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    scroll-behavior: auto !important;
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
 }
