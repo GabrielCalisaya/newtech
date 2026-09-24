@@ -25,8 +25,8 @@ Sitio web corporativo bilingüe de **New Tech**, orientado a presentar servicios
 ```text
 ├── index.html          # Página principal en español
 ├── en/index.html       # Versión en inglés
-├── css/                # Estilos y tipografías
-├── js/main.js          # Interacciones, tema y portafolio
+├── css/site-v2.css     # Estilos de la interfaz actual
+├── js/site-v2.js       # Interacciones y comportamiento del sitio
 ├── img/                # Imágenes y recursos visuales
 ├── privacidad.html     # Política de privacidad
 ├── robots.txt

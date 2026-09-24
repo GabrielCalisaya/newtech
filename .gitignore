@@ -1,0 +1,7 @@
+# Internal notes and temporary commit text
+AUDITORIA-*.md
+PENDIENTES.md
+COMMIT_MSG.txt
+
+# Local system files
+.DS_Store
