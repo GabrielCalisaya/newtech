@@ -19,7 +19,7 @@ export default function App() {
     <div className="site-shell min-h-screen">
       <PageReset />
       <header className="demo-header">
-        <div className="demo-container flex items-center justify-between gap-4 py-4 md:py-5">
+        <div className="demo-container experience-header-inner flex items-center justify-between gap-4 py-4 md:py-5">
           <Link
             to="/"
             className="brand-link"
@@ -27,6 +27,7 @@ export default function App() {
           >
             <span className="brand-symbol" aria-hidden="true">
               <img
+                className="brand-logo"
                 src="/img/newtech-logo-c.png"
                 alt=""
               />
