@@ -1,8 +1,10 @@
-import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
+import { Link, NavLink, Route, Routes, useLocation } from "react-router-dom";
+import logoUrl from "../../img/newtech-logo-c.png";
 import HomePage from "./pages/HomePage";
 import WheelPage from "./pages/WheelPage";
 import TriviaPage from "./pages/TriviaPage";
+import "./logo.css";
 
 const ThreeDPage = lazy(() => import("./pages/ThreeDPage"));
 
@@ -26,11 +28,7 @@ export default function App() {
             aria-label="New Tech Experiencias, inicio"
           >
             <span className="brand-symbol" aria-hidden="true">
-              <img
-                className="brand-logo"
-                src="/img/newtech-logo-c.png"
-                alt=""
-              />
+              <img className="brand-logo" src={logoUrl} alt="" />
             </span>
             <span className="brand-name" aria-hidden="true">
               <strong>
