@@ -27,7 +27,7 @@ export default function App() {
           >
             <span className="brand-symbol" aria-hidden="true">
               <img
-                src="/img/newtech-logo.png"
+                src="/img/newtech-logo-c.png"
                 alt=""
                 width="500"
                 height="250"
