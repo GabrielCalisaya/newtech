@@ -234,7 +234,7 @@ test('las cuatro páginas usan la versión actual de CSS y JavaScript', async ()
     ]);
 
     for (const html of pages) {
-        assert.match(html, /site-v2\.css\?v=3/);
+        assert.match(html, /site-v2\.css\?v=4/);
         assert.match(html, /site-v2\.js\?v=4/);
     }
 });

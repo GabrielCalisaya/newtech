@@ -504,6 +504,22 @@ ol { margin: 0; padding: 0; list-style: none; }
 .capability-row > span { color: var(--signal-dark); font-family: var(--mono); font-size: .68rem; }
 .capability-row h3 { font-family: var(--display); font-size: clamp(1.4rem, 2.5vw, 2.45rem); letter-spacing: -.04em; }
 .capability-row p { max-width: 560px; color: var(--muted); }
+.invitation-offer {
+    grid-column: 3 / 13;
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-top: clamp(3rem, 5vw, 5rem);
+    padding: clamp(2rem, 4vw, 3.5rem);
+    color: var(--white);
+    background: var(--ink);
+}
+.invitation-offer .eyebrow { color: var(--signal); }
+.invitation-offer h3 { max-width: 700px; margin-top: 1rem; font-family: var(--display); font-size: clamp(2rem, 4vw, 3.8rem); line-height: 1.05; letter-spacing: -.045em; }
+.invitation-offer p:not(.eyebrow) { max-width: 620px; margin-top: 1.25rem; color: #c8c3ba; }
+.invitation-offer > a { flex: none; padding-bottom: .3rem; border-bottom: 1px solid var(--signal); font-family: var(--mono); font-size: .7rem; text-transform: uppercase; }
+.invitation-offer > a:hover { color: var(--signal); }
 
 .founder {
     min-height: 860px;
@@ -857,6 +873,7 @@ ol { margin: 0; padding: 0; list-style: none; }
     .capability-list { margin-top: 4rem; }
     .capability-row { grid-template-columns: 36px 1fr; gap: 1rem; padding: 1.5rem 0; }
     .capability-row p { grid-column: 2; }
+    .invitation-offer { grid-column: 1; align-items: start; flex-direction: column; }
 
     .founder { padding: 0; }
     .founder-image { min-height: 540px; }
