@@ -145,6 +145,29 @@
     window.addEventListener('scroll', updateHeader, { passive: true });
     updateHeader();
 
+    const whatsappFloat = document.querySelector('.whatsapp-float');
+    if (whatsappFloat) {
+        let surfaceFrame = 0;
+        const updateWhatsAppSurface = () => {
+            const rect = whatsappFloat.getBoundingClientRect();
+            const underneath = document.elementsFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2)
+                .find((element) => !whatsappFloat.contains(element));
+            const onOrangeImage = underneath?.closest('.founder-image');
+            const onDarkSurface = underneath?.closest('.work, .founder, .site-footer, .invitation-offer, .portrait-frame');
+            whatsappFloat.classList.toggle('is-on-dark', Boolean(onDarkSurface && !onOrangeImage));
+        };
+        const scheduleWhatsAppSurface = () => {
+            if (surfaceFrame) return;
+            surfaceFrame = window.requestAnimationFrame(() => {
+                surfaceFrame = 0;
+                updateWhatsAppSurface();
+            });
+        };
+        window.addEventListener('scroll', scheduleWhatsAppSurface, { passive: true });
+        window.addEventListener('resize', scheduleWhatsAppSurface);
+        scheduleWhatsAppSurface();
+    }
+
     const year = document.getElementById('year');
     if (year) year.textContent = String(new Date().getFullYear());
 
