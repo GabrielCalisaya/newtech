@@ -151,7 +151,7 @@
         const updateWhatsAppSurface = () => {
             const rect = whatsappFloat.getBoundingClientRect();
             const underneath = document.elementsFromPoint(rect.left + rect.width / 2, rect.top + rect.height / 2)
-                .find((element) => !whatsappFloat.contains(element));
+                .find((element) => !whatsappFloat.contains(element) && element.closest('main, footer'));
             const onOrangeImage = underneath?.closest('.founder-image');
             const onDarkSurface = underneath?.closest('.work, .founder, .site-footer, .invitation-offer, .portrait-frame');
             whatsappFloat.classList.toggle('is-on-dark', Boolean(onDarkSurface && !onOrangeImage));
