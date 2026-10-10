@@ -91,6 +91,24 @@ test('el footer bilingüe cierra con marca y rutas comerciales reales', async ()
     }
 });
 
+test('ofrece un acceso flotante a WhatsApp sin romper la interfaz bilingüe', async () => {
+    const [es, en, css] = await Promise.all([
+        read('../index.html'),
+        read('../en/index.html'),
+        read('../css/site-v2.css')
+    ]);
+
+    assert.match(es, /class="whatsapp-float"/);
+    assert.match(en, /class="whatsapp-float"/);
+    assert.match(es, /aria-label="Escribir por WhatsApp a New Tech"/);
+    assert.match(en, /aria-label="Message New Tech on WhatsApp"/);
+    assert.match(es, /wa\.me\/5493885187080\?text=Hola%20Gabriel%2C%20vi%20la%20web%20de%20New%20Tech/);
+    assert.match(en, /wa\.me\/5493885187080\?text=Hi%20Gabriel%2C%20I%20visited%20the%20New%20Tech%20website/);
+    assert.match(css, /\.whatsapp-float\s*\{[^}]*position:\s*fixed[^}]*z-index:\s*80/s);
+    assert.match(css, /\.whatsapp-float-icon/);
+    assert.match(css, /@media\s*\(max-width:\s*560px\)[\s\S]*\.whatsapp-float\s*\{/);
+});
+
 test('define una escala tipográfica específica para móviles angostos', async () => {
     const css = await read('../css/site-v2.css');
 
@@ -234,7 +252,7 @@ test('las cuatro páginas usan la versión actual de CSS y JavaScript', async ()
     ]);
 
     for (const html of pages) {
-        assert.match(html, /site-v2\.css\?v=4/);
+        assert.match(html, /site-v2\.css\?v=5/);
         assert.match(html, /site-v2\.js\?v=4/);
     }
 });

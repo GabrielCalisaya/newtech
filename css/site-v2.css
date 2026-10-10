@@ -722,6 +722,50 @@ ol { margin: 0; padding: 0; list-style: none; }
 .privacy-actions .privacy-accept { border-color: var(--signal); color: var(--ink); background: var(--signal); }
 .privacy-actions .privacy-accept:hover { color: var(--ink); background: var(--white); }
 
+.whatsapp-float {
+    position: fixed;
+    right: clamp(1rem, 2vw, 1.75rem);
+    bottom: clamp(1rem, 2vw, 1.75rem);
+    z-index: 80;
+    display: inline-flex;
+    align-items: center;
+    gap: .65rem;
+    min-height: 54px;
+    padding: .72rem 1rem .72rem .72rem;
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    color: var(--white);
+    background: var(--ink);
+    box-shadow: 6px 6px 0 var(--signal);
+    font-family: var(--mono);
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+.whatsapp-float:hover {
+    transform: translate(-3px, -3px);
+    background: var(--signal);
+    box-shadow: 9px 9px 0 var(--ink);
+}
+.whatsapp-float:focus-visible { outline-offset: 6px; }
+.whatsapp-float-icon {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    flex: 0 0 34px;
+    border-radius: 50%;
+    color: var(--ink);
+    background: var(--white);
+}
+.whatsapp-float-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
 .site-footer {
     position: relative;
     display: grid;
@@ -887,6 +931,10 @@ ol { margin: 0; padding: 0; list-style: none; }
     .field-pair { grid-template-columns: 1fr; }
     .form-end { align-items: stretch; flex-direction: column; }
     .submit-button { width: 100%; }
+    .whatsapp-float {
+        right: 1rem;
+        bottom: 1rem;
+    }
 
     .site-footer { grid-template-columns: 1fr 1fr; gap: 3.5rem 2rem; }
     .footer-brand { grid-column: 1 / -1; }
@@ -954,6 +1002,21 @@ ol { margin: 0; padding: 0; list-style: none; }
     .founder-image { min-height: 450px; }
     .founder-copy { padding-top: 4.5rem; padding-bottom: 4.5rem; }
     .contact-form { padding: 1.25rem; box-shadow: 6px 6px 0 var(--signal); }
+    .whatsapp-float {
+        min-height: 50px;
+        padding: .55rem .7rem .55rem .55rem;
+        box-shadow: 5px 5px 0 var(--signal);
+        font-size: .62rem;
+    }
+    .whatsapp-float-icon {
+        width: 32px;
+        height: 32px;
+        flex-basis: 32px;
+    }
+    .whatsapp-float-icon svg {
+        width: 22px;
+        height: 22px;
+    }
 
     .site-footer { grid-template-columns: 1fr; padding-top: 3.5rem; }
     .footer-brand, .footer-nav, .footer-contact, .footer-bottom { grid-column: 1; }
