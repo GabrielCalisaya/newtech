@@ -18,9 +18,9 @@ const files = [
   "sitemap.xml",
   "_redirects",
 ];
-const directories = ["css", "js", "img", "fonts", "en"];
+const directories = ["css", "js", "img", "fonts", "en", "bases-sorteo"];
 await mkdir(output, { recursive: true });
 for (const file of files) await cp(join(root, file), join(output, file));
 for (const directory of directories)
   await cp(join(root, directory), join(output, directory), { recursive: true });
-console.log("Corporate pages and /experiencias assembled in dist/");
+console.log("Corporate pages, /experiencias and /bases-sorteo assembled in dist/");
