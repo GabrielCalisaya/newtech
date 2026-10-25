@@ -35,6 +35,60 @@ describe("demo de experiencias", () => {
     expect(
       screen.getByRole("link", { name: /Explorar objeto 3D/i }),
     ).toHaveAttribute("href", "/3d");
+    expect(
+      screen.getByRole("link", { name: /Probar raspadita/i }),
+    ).toHaveAttribute("href", "/raspadita");
+  });
+
+  it("lleva la consulta de eventos a WhatsApp con un mensaje listo", () => {
+    renderAt("/");
+    const cta = screen.getByRole("link", { name: /Hablemos de tu evento/i });
+    expect(cta.getAttribute("href")).toMatch(
+      /^https:\/\/wa\.me\/5493885187080\?text=/,
+    );
+    expect(decodeURIComponent(cta.getAttribute("href") ?? "")).toMatch(
+      /activación para mi evento/i,
+    );
+    expect(
+      screen.getByRole("heading", { name: /Lo que se lleva tu marca/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("revela la raspadita y pide datos para reclamar el premio", async () => {
+    vi.spyOn(Math, "random").mockReturnValue(0.01);
+    vi.useFakeTimers();
+    renderAt("/raspadita");
+    expect(screen.getByText(/Premio oculto/i)).toBeInTheDocument();
+    screen.getByRole("button", { name: /Revelar premio/i }).click();
+    await act(async () => {
+      vi.advanceTimersByTime(1000);
+    });
+    expect(
+      screen.getByRole("dialog", { name: /Ganaste 15% OFF/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Reclamar premio/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("permite raspar otra tarjeta si no hay premio", async () => {
+    vi.spyOn(Math, "random").mockReturnValue(0.99);
+    vi.useFakeTimers();
+    renderAt("/raspadita");
+    screen.getByRole("button", { name: /Revelar premio/i }).click();
+    await act(async () => {
+      vi.advanceTimersByTime(1000);
+    });
+    expect(
+      screen.getByRole("dialog", { name: /Seguí participando/i }),
+    ).toBeInTheDocument();
+    await act(async () => {
+      screen.getByRole("button", { name: /Raspar otra tarjeta/i }).click();
+    });
+    expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Revelar premio/i }),
+    ).toBeInTheDocument();
   });
 
   it("entrega un premio y aclara que el formulario no guarda datos", async () => {

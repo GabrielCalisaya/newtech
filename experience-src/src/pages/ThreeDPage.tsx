@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "@google/model-viewer";
 import DemoDialog from "../components/DemoDialog";
 import DemoForm from "../components/DemoForm";
+import EventCta from "../components/EventCta";
 
 export default function ThreeDPage() {
   const [open, setOpen] = useState(false);
@@ -12,7 +13,7 @@ export default function ThreeDPage() {
         <Link className="back-link" to="/">
           ← Todas las experiencias
         </Link>
-        <span className="page-index">MUESTRA 03 / 03</span>
+        <span className="page-index">MUESTRA 03 / 04</span>
       </div>
       <div className="experience-intro">
         <p className="eyebrow">ACTIVACIÓN / OBJETO DIGITAL</p>
@@ -84,6 +85,7 @@ export default function ThreeDPage() {
           </div>
         </aside>
       </div>
+      <EventCta title="Tu producto, tu logo o un personaje de tu marca en 3D." />
       {open && (
         <DemoDialog title="Acceso de muestra" onClose={() => setOpen(false)}>
           <p className="dialog-lead">

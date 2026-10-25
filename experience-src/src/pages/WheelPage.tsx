@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import DemoDialog from "../components/DemoDialog";
 import DemoForm from "../components/DemoForm";
+import EventCta from "../components/EventCta";
 
 const prizes = [
   { name: "10% OFF", label: ["10%", "OFF"], fill: "#fa5b20", text: "#101217" },
@@ -138,7 +139,7 @@ export default function WheelPage() {
         <Link className="back-link" to="/">
           ← Todas las experiencias
         </Link>
-        <span className="page-index">MUESTRA 01 / 03</span>
+        <span className="page-index">MUESTRA 01 / 04</span>
       </div>
       <div className="experience-intro">
         <p className="eyebrow">ACTIVACIÓN / PREMIOS</p>
@@ -191,6 +192,7 @@ export default function WheelPage() {
           </div>
         </aside>
       </div>
+      <EventCta title="Una ruleta con los premios, colores y reglas de tu marca." />
       {wonPrize && (
         <DemoDialog
           title={

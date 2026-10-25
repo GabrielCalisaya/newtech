@@ -4,6 +4,8 @@ import logoUrl from "../../img/newtech-logo-c.png";
 import HomePage from "./pages/HomePage";
 import WheelPage from "./pages/WheelPage";
 import TriviaPage from "./pages/TriviaPage";
+import ScratchPage from "./pages/ScratchPage";
+import { EVENT_WHATSAPP_URL } from "./contact";
 import "./logo.css";
 
 const ThreeDPage = lazy(() => import("./pages/ThreeDPage"));
@@ -41,6 +43,7 @@ export default function App() {
             <NavLink to="/ruleta">Ruleta</NavLink>
             <NavLink to="/trivia">Trivia</NavLink>
             <NavLink to="/3d">3D</NavLink>
+            <NavLink to="/raspadita">Raspadita</NavLink>
           </nav>
           <a className="back-site hidden sm:inline-flex" href="/">
             Volver al sitio <span aria-hidden="true">↗</span>
@@ -52,6 +55,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/ruleta" element={<WheelPage />} />
           <Route path="/trivia" element={<TriviaPage />} />
+          <Route path="/raspadita" element={<ScratchPage />} />
           <Route
             path="/3d"
             element={
@@ -85,7 +89,13 @@ export default function App() {
           <p>New Tech · Experiencias digitales para eventos</p>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
             <Link to="/">Todas las muestras</Link>
-            <a href="/#contacto">Consultar un proyecto ↗</a>
+            <a
+              href={EVENT_WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Consultar por WhatsApp ↗
+            </a>
             <a href="/">Sitio principal ↗</a>
           </div>
         </div>
