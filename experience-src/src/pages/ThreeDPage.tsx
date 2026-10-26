@@ -13,7 +13,7 @@ export default function ThreeDPage() {
         <Link className="back-link" to="/">
           ← Todas las experiencias
         </Link>
-        <span className="page-index">MUESTRA 03 / 04</span>
+        <span className="page-index">MUESTRA 03 / 06</span>
       </div>
       <div className="experience-intro">
         <p className="eyebrow">ACTIVACIÓN / OBJETO DIGITAL</p>

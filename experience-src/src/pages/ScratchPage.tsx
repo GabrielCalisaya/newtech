@@ -174,7 +174,7 @@ export default function ScratchPage() {
         <Link className="back-link" to="/">
           ← Todas las experiencias
         </Link>
-        <span className="page-index">MUESTRA 04 / 04</span>
+        <span className="page-index">MUESTRA 04 / 06</span>
       </div>
       <div className="experience-intro">
         <p className="eyebrow">ACTIVACIÓN / SORPRESA</p>
