@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { EVENT_WHATSAPP_URL } from "../contact";
 
 const demos = [
   {
@@ -28,6 +29,38 @@ const demos = [
     href: "/3d",
     className: "card-three",
   },
+  {
+    number: "04",
+    title: "Raspadita digital",
+    kind: "SORPRESA AL INSTANTE",
+    text: "Una tarjeta para raspar con el dedo. Expectativa, premio y registro en pocos segundos.",
+    action: "Probar raspadita",
+    href: "/raspadita",
+    className: "card-scratch",
+  },
+];
+
+const brandValue = [
+  {
+    number: "01",
+    title: "Contactos para seguir la conversación",
+    text: "Cada participación puede pedir nombre, WhatsApp y correo, así el vínculo no termina cuando se desarma el estand.",
+  },
+  {
+    number: "02",
+    title: "Números del evento",
+    text: "Cuántas personas jugaron, qué premios salieron y en qué momentos hubo más movimiento.",
+  },
+  {
+    number: "03",
+    title: "Tu marca en cada pantalla",
+    text: "Colores, logo, premios y preguntas se adaptan a tu producto y al tema del evento.",
+  },
+  {
+    number: "04",
+    title: "Listo para el estand",
+    text: "Alcanza con un QR impreso. Si hay un televisor o monitor, la experiencia también se puede ver en grande.",
+  },
 ];
 
 export default function HomePage() {
@@ -42,11 +75,11 @@ export default function HomePage() {
             Experiencias Digitales <em>para Expos y Eventos.</em>
           </h1>
           <p className="hero-intro">
-            Un estand puede ser mucho más que un lugar para mirar. Probá tres
+            Un estand puede ser mucho más que un lugar para mirar. Probá cuatro
             formas de invitar a participar desde el celular.
           </p>
           <div className="hero-meta">
-            <span>03 muestras para explorar</span>
+            <span>04 muestras para explorar</span>
             <span>Sin descargar aplicaciones</span>
             <span>Hechas para el celular</span>
           </div>
@@ -67,7 +100,7 @@ export default function HomePage() {
       <section className="demo-container pb-24" aria-labelledby="samples-title">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">EXPLORÁ / 001—003</p>
+            <p className="eyebrow">EXPLORÁ / 001—004</p>
             <h2 id="samples-title">Elegí una muestra.</h2>
           </div>
           <p>
@@ -84,7 +117,7 @@ export default function HomePage() {
               aria-label={demo.action}
             >
               <div className="card-top">
-                <span>{demo.number} / 03</span>
+                <span>{demo.number} / 04</span>
                 <span aria-hidden="true">↗</span>
               </div>
               <div className="card-art" aria-hidden="true">
@@ -99,9 +132,14 @@ export default function HomePage() {
                     <i />
                     <i />
                   </div>
-                ) : (
+                ) : demo.number === "03" ? (
                   <div className="mini-object">
                     <span>&lt;/&gt;</span>
+                  </div>
+                ) : (
+                  <div className="mini-scratch">
+                    <span>15%</span>
+                    <i />
                   </div>
                 )}
               </div>
@@ -117,6 +155,30 @@ export default function HomePage() {
           ))}
         </div>
       </section>
+      <section
+        className="demo-container value-section"
+        aria-labelledby="value-title"
+      >
+        <div className="section-heading">
+          <div>
+            <p className="eyebrow">MÁS QUE UN JUEGO</p>
+            <h2 id="value-title">Lo que se lleva tu marca.</h2>
+          </div>
+          <p>
+            La experiencia atrae gente al estand. Lo que queda después es lo que
+            hace que valga la pena.
+          </p>
+        </div>
+        <div className="value-grid">
+          {brandValue.map((item) => (
+            <article key={item.number} className="value-item">
+              <span>{item.number}</span>
+              <h3>{item.title}</h3>
+              <p>{item.text}</p>
+            </article>
+          ))}
+        </div>
+      </section>
       <section className="home-cta">
         <div className="demo-container cta-inner">
           <div>
@@ -127,9 +189,19 @@ export default function HomePage() {
               <em>para tu marca.</em>
             </h2>
           </div>
-          <a href="/#contacto" className="button-primary">
-            Hablemos de tu evento <span aria-hidden="true">↗</span>
-          </a>
+          <div className="cta-actions">
+            <a
+              href={EVENT_WHATSAPP_URL}
+              className="button-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hablemos de tu evento <span aria-hidden="true">↗</span>
+            </a>
+            <a href="/#contacto" className="cta-secondary">
+              Prefiero escribir un correo
+            </a>
+          </div>
         </div>
       </section>
     </>

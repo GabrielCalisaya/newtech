@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import DemoForm from "../components/DemoForm";
+import EventCta from "../components/EventCta";
 
 const questions = [
   {
@@ -68,7 +69,7 @@ export default function TriviaPage() {
         <Link className="back-link" to="/">
           ← Todas las experiencias
         </Link>
-        <span className="page-index">MUESTRA 02 / 03</span>
+        <span className="page-index">MUESTRA 02 / 04</span>
       </div>
       <div className="experience-intro">
         <p className="eyebrow">ACTIVACIÓN / CONOCIMIENTO</p>
@@ -177,6 +178,7 @@ export default function TriviaPage() {
           </aside>
         </div>
       )}
+      <EventCta title="Una trivia con preguntas sobre tu producto y premios para quienes participan." />
     </div>
   );
 }
