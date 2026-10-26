@@ -69,7 +69,7 @@ export default function TriviaPage() {
         <Link className="back-link" to="/">
           ← Todas las experiencias
         </Link>
-        <span className="page-index">MUESTRA 02 / 04</span>
+        <span className="page-index">MUESTRA 02 / 06</span>
       </div>
       <div className="experience-intro">
         <p className="eyebrow">ACTIVACIÓN / CONOCIMIENTO</p>

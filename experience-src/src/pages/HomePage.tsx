@@ -38,6 +38,24 @@ const demos = [
     href: "/raspadita",
     className: "card-scratch",
   },
+  {
+    number: "05",
+    title: "Memotest de productos",
+    kind: "JUEGO DE MEMORIA",
+    text: "Pares con los productos o íconos de la marca. Se juega en un minuto y deja la marca en la cabeza.",
+    action: "Probar memotest",
+    href: "/memotest",
+    className: "card-memory",
+  },
+  {
+    number: "06",
+    title: "Votación en vivo",
+    kind: "PANTALLA COMPARTIDA",
+    text: "El público vota desde el celular y los resultados se mueven en el televisor del estand.",
+    action: "Probar votación",
+    href: "/votacion",
+    className: "card-vote",
+  },
 ];
 
 const brandValue = [
@@ -75,11 +93,11 @@ export default function HomePage() {
             Experiencias Digitales <em>para Expos y Eventos.</em>
           </h1>
           <p className="hero-intro">
-            Un estand puede ser mucho más que un lugar para mirar. Probá cuatro
+            Un estand puede ser mucho más que un lugar para mirar. Probá seis
             formas de invitar a participar desde el celular.
           </p>
           <div className="hero-meta">
-            <span>04 muestras para explorar</span>
+            <span>06 muestras para explorar</span>
             <span>Sin descargar aplicaciones</span>
             <span>Hechas para el celular</span>
           </div>
@@ -100,7 +118,7 @@ export default function HomePage() {
       <section className="demo-container pb-24" aria-labelledby="samples-title">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">EXPLORÁ / 001—004</p>
+            <p className="eyebrow">EXPLORÁ / 001—006</p>
             <h2 id="samples-title">Elegí una muestra.</h2>
           </div>
           <p>
@@ -117,7 +135,7 @@ export default function HomePage() {
               aria-label={demo.action}
             >
               <div className="card-top">
-                <span>{demo.number} / 04</span>
+                <span>{demo.number} / 06</span>
                 <span aria-hidden="true">↗</span>
               </div>
               <div className="card-art" aria-hidden="true">
@@ -136,10 +154,24 @@ export default function HomePage() {
                   <div className="mini-object">
                     <span>&lt;/&gt;</span>
                   </div>
-                ) : (
+                ) : demo.number === "04" ? (
                   <div className="mini-scratch">
                     <span>15%</span>
                     <i />
+                  </div>
+                ) : demo.number === "05" ? (
+                  <div className="mini-memory">
+                    <i />
+                    <span>★</span>
+                    <span>★</span>
+                    <i />
+                  </div>
+                ) : (
+                  <div className="mini-vote">
+                    <i style={{ height: "78%" }} />
+                    <i style={{ height: "46%" }} />
+                    <i style={{ height: "62%" }} />
+                    <i style={{ height: "30%" }} />
                   </div>
                 )}
               </div>
@@ -178,6 +210,13 @@ export default function HomePage() {
             </article>
           ))}
         </div>
+        <Link to="/panel" className="panel-link">
+          <span>
+            <span className="eyebrow">PANEL DE MUESTRA</span>
+            <strong>Mirá cómo se ven los números de una activación.</strong>
+          </span>
+          <span aria-hidden="true">→</span>
+        </Link>
       </section>
       <section className="home-cta">
         <div className="demo-container cta-inner">

@@ -38,6 +38,86 @@ describe("demo de experiencias", () => {
     expect(
       screen.getByRole("link", { name: /Probar raspadita/i }),
     ).toHaveAttribute("href", "/raspadita");
+    expect(
+      screen.getByRole("link", { name: /Probar memotest/i }),
+    ).toHaveAttribute("href", "/memotest");
+    expect(
+      screen.getByRole("link", { name: /Probar votación/i }),
+    ).toHaveAttribute("href", "/votacion");
+  });
+
+  it("completa el memotest y ofrece el registro al sorteo", async () => {
+    const user = userEvent.setup();
+    const { container } = renderAt("/memotest");
+    const cards = [
+      ...container.querySelectorAll<HTMLButtonElement>(".memory-card"),
+    ];
+    expect(cards).toHaveLength(12);
+    const pairs = new Map<string, HTMLButtonElement[]>();
+    for (const card of cards) {
+      const pair = card.dataset.pair ?? "";
+      pairs.set(pair, [...(pairs.get(pair) ?? []), card]);
+    }
+    for (const [first, second] of pairs.values()) {
+      await user.click(first);
+      await user.click(second);
+    }
+    expect(screen.getByText(/Completaste el tablero/i)).toBeInTheDocument();
+    expect(screen.getByText(/6 movimientos/i)).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Participar en el sorteo/i }),
+    ).toBeInTheDocument();
+  });
+
+  it("da vuelta las cartas que no forman par", async () => {
+    vi.useFakeTimers();
+    const { container } = renderAt("/memotest");
+    const cards = [
+      ...container.querySelectorAll<HTMLButtonElement>(".memory-card"),
+    ];
+    const first = cards[0];
+    const other = cards.find((card) => card.dataset.pair !== first.dataset.pair)!;
+    await act(async () => {
+      first.click();
+    });
+    await act(async () => {
+      other.click();
+    });
+    expect(first).toHaveAttribute("aria-pressed", "true");
+    await act(async () => {
+      vi.advanceTimersByTime(900);
+    });
+    expect(first).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByText(/Movimientos 01/i)).toBeInTheDocument();
+  });
+
+  it("suma el voto y sigue recibiendo votos en vivo", async () => {
+    vi.useFakeTimers();
+    renderAt("/votacion");
+    expect(screen.getByText("122")).toBeInTheDocument();
+    await act(async () => {
+      screen.getByRole("button", { name: /Raspadita/i }).click();
+    });
+    expect(screen.getByText(/Gracias por votar/i)).toBeInTheDocument();
+    expect(screen.getByText(/Tu voto/i)).toBeInTheDocument();
+    expect(screen.getByText("123")).toBeInTheDocument();
+    await act(async () => {
+      vi.advanceTimersByTime(1400 * 3);
+    });
+    expect(screen.getByText("126")).toBeInTheDocument();
+  });
+
+  it("muestra el panel de la marca con datos de muestra", () => {
+    renderAt("/panel");
+    expect(screen.getByText(/Datos ficticios/i)).toBeInTheDocument();
+    expect(screen.getByText("Contactos captados")).toBeInTheDocument();
+    expect(
+      screen.getByRole("heading", { name: /Participaciones por hora/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole("button", { name: /Descargar CSV de muestra/i }),
+    ).toBeInTheDocument();
+    expect(screen.getAllByRole("row")).toHaveLength(6);
   });
 
   it("lleva la consulta de eventos a WhatsApp con un mensaje listo", () => {
