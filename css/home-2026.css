@@ -85,3 +85,52 @@ body.home-2026{background:var(--night);color:var(--chalk);font-family:'Outfit',A
 @media(max-width:1000px){.nt-hero-layout{grid-template-columns:1fr}.nt-hero h1{max-width:13ch}.nt-console{max-width:680px}.nt-architecture,.nt-stack-grid{grid-template-columns:repeat(2,1fr)}.nt-architecture>div{min-height:0;border-bottom:1px solid #8c9990}}
 @media(max-width:700px){.nt-wrap{width:min(100% - 2rem,1440px)}.nt-hero{padding-top:8rem}.nt-hero h1{font-size:clamp(3rem,12vw,5rem)}.nt-heading,.nt-case,.nt-about{grid-template-columns:1fr}.nt-offers,.nt-stack-grid{grid-template-columns:1fr}.nt-stack-grid>div{min-height:0}.nt-architecture{grid-template-columns:1fr}.nt-architecture>div{border-right:0;min-height:0;padding:1.2rem}.nt-architecture b{margin-bottom:.75rem}.nt-hero-foot{gap:.6rem 1.5rem}.nt-case{gap:1.4rem}.nt-about img{max-height:460px}}
 @media(prefers-reduced-motion:reduce){.nt-button,.nt-case{transition:none}}
+
+/* New Tech's established paper, ink and orange identity. */
+:root{--night:#11110f;--chalk:#f2efe6;--lime:#ff4d00;--faint:#68645d;--rule:rgba(17,17,15,.24)}
+body.home-2026{background:var(--chalk);color:var(--night)}
+.home-2026 .site-header,.home-2026 .site-header.is-scrolled{background:rgba(242,239,230,.97);border-color:var(--rule);color:var(--night)}
+.home-2026 .wordmark img{mix-blend-mode:multiply;filter:none}
+.home-2026 .menu-glyph,.home-2026 .menu-glyph::before{background:var(--night)}
+.home-2026 .mobile-nav{background:var(--night);color:var(--chalk)}
+.home-2026 .site-footer{background:var(--night)}
+.home-2026 .whatsapp-float{background:var(--night);color:var(--chalk);border-color:var(--night);box-shadow:4px 4px 0 var(--lime)}
+.home-2026 .whatsapp-float:hover{background:var(--lime);color:var(--night);box-shadow:7px 7px 0 var(--night)}
+.nt-hero{background:var(--chalk)}
+.nt-hero h1{color:var(--night)}
+.nt-hero h1 span{color:#c83c00}
+.nt-hero-lead,.nt-intro{color:#393833}
+.nt-hero-foot{color:#59564e}
+.nt-accent,.nt-case .nt-tag,.nt-case dt,.nt-stack-grid h3{color:#c83c00}
+.nt-button{color:var(--night)}
+.nt-button:hover{background:var(--night);border-color:var(--night);color:var(--chalk)}
+.nt-link:hover{color:#c83c00}
+.nt-console{background:var(--night);color:var(--chalk);border-color:var(--night);box-shadow:18px 18px 0 rgba(255,77,0,.18)}
+.nt-console-bar,.nt-signal b{color:#ff7c42}
+.nt-console-bar,.nt-signal,.nt-signal:last-child{border-color:#59534c}
+.nt-signal{color:#e7e2d8}
+.nt-signal:hover,.nt-signal[aria-pressed="true"]{background:#37332e;color:var(--chalk)}
+.nt-console-result{color:var(--night)}
+.nt-section{background:var(--chalk);color:var(--night)}
+.nt-case{background:var(--night);color:var(--chalk)}
+.nt-case:hover{background:#292723}
+.nt-case .nt-tag,.nt-case dt{color:#ff7c42}
+.nt-case p,.nt-case dd{color:#e0dbd0}
+.nt-case dl div{border-color:rgba(242,239,230,.26)}
+.nt-case a{border-color:var(--lime)}
+.nt-system{background:#e6dfd1}
+.nt-system .nt-intro{color:#393833}
+.nt-architecture>div{border-color:#8c857b}
+.nt-architecture p,.nt-system-note{color:#403d37}
+.nt-offers{background:var(--rule)}
+.nt-offers article{background:var(--chalk)}
+.nt-offers p,.nt-about p{color:#403d37}
+.nt-about img{border-color:var(--night)}
+.nt-stack{background:var(--night);color:var(--chalk)}
+.nt-stack .nt-intro{color:#d4cec1}
+.nt-stack .nt-accent,.nt-stack-grid h3{color:#ff7c42}
+.nt-stack-grid>div{background:var(--night)}
+.nt-stack-grid p{color:#e0dbd0}
+.nt-contact{background:var(--night);color:var(--chalk)}
+.nt-contact .nt-accent{color:#ff7c42}
+.nt-contact p{color:#e0dbd0}
