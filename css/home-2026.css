@@ -31,7 +31,7 @@ body.home-2026 { background: var(--nt-paper); color: var(--nt-ink); font-family:
 .nt-hero::before { content: ''; position: absolute; top: 0; left: 0; width: clamp(5px, .6vw, 9px); height: 100%; background: var(--nt-orange); }
 .nt-hero-layout { display: grid; grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); gap: clamp(2rem, 5vw, 6rem); align-items: center; }
 .nt-hero h1 { max-width: 12ch; color: var(--nt-ink); font: 800 clamp(3.6rem, 7.2vw, 7.8rem)/.98 'Sora', Arial, sans-serif; letter-spacing: -.075em; }
-.nt-hero h1 span { color: var(--nt-orange-dark); }
+.nt-hero h1 span { color: var(--nt-orange); }
 .nt-hero-lead { max-width: 57ch; margin: 2.2rem 0; font-size: clamp(1.1rem, 1.5vw, 1.42rem); line-height: 1.55; color: #393833; }
 .nt-actions { display: flex; gap: 1rem 1.5rem; flex-wrap: wrap; align-items: center; }
 .nt-button { display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: .8rem 1.35rem; background: var(--nt-ink); color: var(--nt-paper); border: 1px solid var(--nt-ink); font-weight: 800; transition: transform .2s, background .2s, color .2s; }
